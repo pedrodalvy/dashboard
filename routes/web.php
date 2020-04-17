@@ -12,25 +12,24 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
 Route::get('/', function () {
-    return view('welcome');
-});
+    return 'home';
+})->name('home');
 
 Route::prefix('admin')->group(function () {
-    Route::get('/', function () {
-        return view('admin.home');
-    });
+    Route::get('/', 'Admin\AdminController@index')
+        ->name('admin.home');
 
-    Route::get('login', function () {
-        return view('admin.login.login');
-    });
+    Route::get('login', 'Auth\AdminLoginController@index')
+        ->name('admin.login');
 
-    Route::get('register', function () {
-        return view('admin.login.register');
-    });
+    Route::post('login', 'Auth\AdminLoginController@login')
+        ->name('admin.login.submit');
+
+    Route::get('logout', 'Auth\AdminLoginController@logout')
+        ->name('admin.logout');
+
 });
 
-Auth::routes();
-
-Route::get('/home', 'HomeController@index')->name('home');
+//Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
