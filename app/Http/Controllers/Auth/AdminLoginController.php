@@ -41,7 +41,9 @@ class AdminLoginController extends Controller
         if ($this->attempt($request)) {
             return redirect()->intended(route('admin.home'));
         }
-        return redirect()->back()->withInput($request->only('user', 'remember'));
+        return redirect()->back()
+            ->withInput($request->only('user', 'remember'))
+            ->withErrors('Login ou senha inválidos');
     }
 
     /**
@@ -61,13 +63,22 @@ class AdminLoginController extends Controller
      */
     static function validateLogin(Request $request)
     {
-        $request->validate([
+        $params = [
             'user' => 'required|string',
             'password' => 'required|string',
-        ]);
+        ];
+
+        $messages = [
+            'user.required' => 'É nessessário informar o usuário',
+            'password.required' => 'É necessário informar a senha',
+        ];
+
+        $request->validate($params, $messages);
     }
 
     /**
+     * Attempt to login with credentials
+     *
      * @param Request $request
      * @return mixed
      */

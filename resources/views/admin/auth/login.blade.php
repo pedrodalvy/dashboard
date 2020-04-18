@@ -16,12 +16,15 @@
                             <div class="p-5">
 
                                 @if ($errors->any())
-                                    <div class="alert alert-danger alert-danger--form">
+                                    <div class="alert alert-danger alert-danger--form alert-dismissible fade show" role="alert">
                                         <ul>
                                             @foreach ($errors->all() as $error)
                                                 <li>{{ $error }}</li>
                                             @endforeach
                                         </ul>
+                                        <button type="button" class="close pr-2 pt-2" data-dismiss="alert" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
                                     </div>
                                 @endif
 
@@ -34,20 +37,20 @@
                                     @csrf
 
                                     <div class="form-group">
-                                        <input type="text" class="form-control form-control-user"
-                                               id="user" name="user" aria-describedby="emailHelp"
-                                               placeholder="Informe o usuário">
+                                        <input class="form-control form-control-user @error('user') is-invalid @enderror"
+                                               type="text" id="user" name="user" aria-describedby="user"
+                                               placeholder="Informe o usuário" value="{{ old('user') }}">
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user"
-                                               id="password" name="password" placeholder="Senha">
+                                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror"
+                                               id="password" name="password" placeholder="Senha" value="{{ old('password') }}">
                                     </div>
 
                                     <div class="form-group">
-                                        <div class="custom-control custom-checkbox small">
+                                        <div class="custom-control custom-checkbox small ml-1">
                                             <input type="checkbox" class="custom-control-input"
-                                                   id="remember" name="remember">
+                                                   id="remember" name="remember" {!! old('remember') ? 'checked' : '' !!}>
                                             <label class="custom-control-label" for="remember">Lembrar</label>
                                         </div>
                                     </div>
@@ -58,10 +61,7 @@
 
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="forgot-password.html">Forgot Password?</a>
-                                </div>
-                                <div class="text-center">
-                                    <a class="small" href="register.html">Create an Account!</a>
+                                    <a class="small" href="forgot-password.html">Esqueceu a senha?</a>
                                 </div>
                             </div>
                         </div>
