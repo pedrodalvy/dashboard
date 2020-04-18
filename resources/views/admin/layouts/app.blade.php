@@ -39,7 +39,7 @@
 </a>
 
 
-@include('admin.layouts.logout-modal')
+@include('admin.layouts.modals.logout-modal')
 
 
 <!-- Bootstrap core JavaScript-->
