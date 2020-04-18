@@ -1,0 +1,11 @@
+.row-card-body {
+    height: 530px;
+}
+
+.alert-danger--form {
+    padding: 10px 0;
+}
+
+.alert-danger--form ul {
+    margin-bottom: 0;
+}
