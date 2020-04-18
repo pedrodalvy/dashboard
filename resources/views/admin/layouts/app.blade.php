@@ -19,6 +19,7 @@
     <!-- Custom styles for this template-->
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" />
 </head>
 
 <body id="page-top">
