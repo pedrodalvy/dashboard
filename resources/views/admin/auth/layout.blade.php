@@ -20,6 +20,8 @@
 
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
+    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" />
+
 </head>
 
 <body class="bg-gradient-primary">

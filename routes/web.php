@@ -29,7 +29,17 @@ Route::prefix('admin')->group(function () {
     Route::get('logout', 'Auth\AdminLoginController@logout')
         ->name('admin.logout');
 
+    Route::prefix('password')->group(function () {
+        Route::get('reset', 'Auth\AdminResetPasswordController@showForm')
+            ->name('admin.password.form');
+
+        Route::post('reset', 'Auth\AdminResetPasswordController@reset')
+            ->name('admin.password.reset');
+
+        Route::get('reset/{token}', 'Auth\AdminResetPasswordController@showUpdatePassForm')
+            ->name('admin.password.reset-form');
+    });
 });
 
-//Auth::routes();
+Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');

@@ -1,7 +1,6 @@
 @extends('admin.auth.layout')
 
 @section('content')
-
     <!-- Outer Row -->
     <div class="row justify-content-center">
 
@@ -10,19 +9,21 @@
             <div class="card o-hidden border-0 shadow-lg my-5">
                 <div class="card-body p-0">
                     <!-- Nested Row within Card Body -->
-                    <div class="row row-card-body" >
-                        <div class="col-lg-6 d-none d-lg-block bg-login-image"></div>
+                    <div class="row row-card-body">
+                        <div class="col-lg-6 d-none d-lg-block bg-password-image"></div>
                         <div class="col-lg-6">
                             <div class="p-5">
 
                                 @include('admin.auth.alert')
 
                                 <div class="text-center">
-                                    <h1 class="h4 text-gray-900 mb-4">Bem Vindo</h1>
+                                    <h1 class="h4 text-gray-900 mb-2">Esqueceu sua senha?</h1>
+                                    <p class="mb-4">Basta digitar seu usuário e endereço de e-mail nos campos abaixo e será enviado um link para redefinição da senha.</p>
                                 </div>
 
-                                <form method="POST" action="{{ route('admin.login.submit') }}"
+                                <form method="POST" action="{{ route('admin.password.reset') }}"
                                       autocomplete="off" class="user">
+
                                     @csrf
 
                                     <div class="form-group">
@@ -32,26 +33,21 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <input type="password" class="form-control form-control-user @error('password') is-invalid @enderror"
-                                               id="password" name="password" placeholder="Senha" value="{{ old('password') }}">
+                                        <input class="form-control form-control-user @error('email') is-invalid @enderror"
+                                               type="email" id="email" name="email" aria-describedby="email"
+                                               placeholder="Informe o e-mail" value="{{ old('email') }}">
                                     </div>
 
-                                    <div class="form-group">
-                                        <div class="custom-control custom-checkbox small ml-1">
-                                            <input type="checkbox" class="custom-control-input"
-                                                   id="remember" name="remember" {!! old('remember') ? 'checked' : '' !!}>
-                                            <label class="custom-control-label" for="remember">Lembrar</label>
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Resetar Senha</button>
 
                                 </form>
 
                                 <hr>
+
                                 <div class="text-center">
-                                    <a class="small" href="{{ route('admin.password.form') }}">Esqueceu a senha?</a>
+                                    <a class="small" href="{{ route('admin.login') }}">Voltar para tela de login</a>
                                 </div>
+
                             </div>
                         </div>
                     </div>
@@ -61,5 +57,4 @@
         </div>
 
     </div>
-
 @endsection

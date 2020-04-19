@@ -9,3 +9,18 @@
 .alert-danger--form ul {
     margin-bottom: 0;
 }
+
+.bg-login-image {
+    background: url('../img/dogito_login_form.jpg') center;
+    background-size: cover
+}
+
+.bg-reset-image {
+    background: url('../img/dogito_update_pass_form.jpg') center;
+    background-size: cover
+}
+
+.bg-password-image {
+    background: url('../img/dogito_reset_pass_form.jpg') center;
+    background-size: cover
+}
