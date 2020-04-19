@@ -4,18 +4,24 @@ namespace App\Services;
 
 use App\Admin;
 use App\Mail\SendAdminResetPasswordMail;
-use Exception;
+use App\PasswordReset;
+use Hash;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\Routing\ResponseFactory;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
-use App\PasswordReset;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
 
 class AdminResetPasswordService
 {
+    /**
+     * reset
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function reset(Request $request)
     {
         $this->validateInputs($request);
@@ -27,7 +33,7 @@ class AdminResetPasswordService
 
         if ($adminUser) {
             $data = [
-                'token' => $this->resetPassword($email),
+                'token' => $this->resetPassword($adminUser),
                 'email' => $email,
             ];
             $this->sendEmail($data);
@@ -43,19 +49,17 @@ class AdminResetPasswordService
      * @param String $email
      * @return Application|ResponseFactory|Response|string
      */
-    protected function resetPassword(String $email)
+    protected function resetPassword($adminUser)
     {
         $token = bin2hex(openssl_random_pseudo_bytes(64));
 
-        try {
-            PasswordReset::create([
-                'email' => $email,
-                'token' => $token,
-            ]);
-            return $token;
-        } catch (Exception $ex) {
-            return response('Falha ao gerar o token', '400');
-        }
+        PasswordReset::create([
+            'id_admin' => $adminUser->id,
+            'email' => $adminUser->email,
+            'token' => $token,
+        ]);
+
+        return $token;
     }
 
     /**
@@ -76,6 +80,12 @@ class AdminResetPasswordService
     /**
      * @param Request $request
      */
+    /**
+     * validateInputs
+     *
+     * @param  Request $request
+     * @return void
+     */
     protected function validateInputs(Request $request)
     {
         $params = [
@@ -92,9 +102,61 @@ class AdminResetPasswordService
         $request->validate($params, $messages);
     }
 
-    protected function sendEmail(array $data) {
-//        Mail::to($data['email'])
-        Mail::to('pedrodalvy@outlook.com')
+    /**
+     * sendEmail
+     *
+     * @param  array $data
+     * @return void
+     */
+    protected function sendEmail(array $data)
+    {
+        Mail::to($data['email'])
             ->send(new SendAdminResetPasswordMail($data));
     }
+
+    /**
+     * updatePassword
+     *
+     * @param  Request $request
+     * @return void
+     */
+    public function updatePassword(Request $request)
+    {
+        $this->validatePassword($request);
+
+        $passwordReset = PasswordReset::whereToken($request->token)->limit('1')->get();
+        $userAdmin = Admin::find($passwordReset->first()->id_admin);
+
+        $userAdmin->password = Hash::make($request->password);
+
+        if ($userAdmin->save()) {
+            return 'Fazer tratamento para alteração realizada com sucesso';
+        }
+    }
+
+    /**
+     * validatePassword
+     *
+     * @param  Request $request
+     * @return void
+     */
+    protected function validatePassword(Request $request)
+    {
+        $params = [
+            'password' => 'required|string|between:8,16',
+            'password_confirm' => 'required|string|same:password',
+        ];
+
+        $messages = [
+            'password.required' => 'É necessário informar a mesma senha nos dois campos',
+            'password.string' => 'Formato de senha inválido',
+            'password.between' => 'A senha precisa conter de 8 a 16 caracteres',
+
+            'password_confirm.required' => 'É necessário informar a mesma senha nos dois campos',
+            'password_confirm.same' => 'As senhas precisam ser iguais nos dois campos',
+        ];
+
+        $request->validate($params, $messages);
+    }
+
 }

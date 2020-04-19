@@ -38,8 +38,11 @@ Route::prefix('admin')->group(function () {
 
         Route::get('reset/{token}', 'Auth\AdminResetPasswordController@showUpdatePassForm')
             ->name('admin.password.reset-form');
+
+        Route::put('reset', 'Auth\AdminResetPasswordController@updatePassword')
+            ->name('admin.password.update');
     });
 });
 
-Auth::routes();
+// Auth::routes();
 //Route::get('/home', 'HomeController@index')->name('home');

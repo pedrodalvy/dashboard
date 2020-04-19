@@ -22,7 +22,7 @@ class PasswordReset extends Model
 {
     public $timestamps = false;
 
-    protected $fillable = ['email', 'token'];
+    protected $fillable = ['id_admin', 'email', 'token'];
 
     public static function boot()
     {
