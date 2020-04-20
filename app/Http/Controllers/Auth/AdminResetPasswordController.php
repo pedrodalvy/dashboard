@@ -8,14 +8,14 @@ use Exception;
 use Illuminate\Http\Request;
 
 class AdminResetPasswordController extends Controller
-{    
+{
     /**
      * resetService
      *
      * @var mixed
      */
     private $resetService;
-    
+
     /**
      * __construct
      *
@@ -28,7 +28,7 @@ class AdminResetPasswordController extends Controller
         $this->middleware('guest:admin');
         // ->except('logout');
     }
-    
+
     /**
      * showForm
      *
@@ -38,7 +38,7 @@ class AdminResetPasswordController extends Controller
     {
         return view('admin.auth.forgot-password');
     }
-    
+
     /**
      * reset
      *
@@ -47,15 +47,17 @@ class AdminResetPasswordController extends Controller
      */
     public function reset(Request $request)
     {
+        $this->resetService->validateUserAndEmail($request);
+
         try {
             return $this->resetService->reset($request);
 
         } catch (Exception $ex) {
-            return response('Falha ao gerar o token', '400');
+            return back()
+                ->with('error', 'Falha ao gerar o token.');
         }
-
     }
-    
+
     /**
      * showUpdatePassForm
      *
@@ -64,10 +66,20 @@ class AdminResetPasswordController extends Controller
      */
     public function showUpdatePassForm(String $token)
     {
-        return view('admin.auth.reset-pass-form')
-            ->with('token', $token);
+        $inTime = $this->resetService->validateUpdatePasswordForm($token);
+
+        if ($inTime) {
+            return view('admin.auth.reset-pass-form')
+                ->with('token', $token);
+        }
+
+        return redirect()->route('admin.password.form')
+            ->with(
+                'error',
+                'O link para redefinição da sua senha está expirado. Solicite novamente'
+            );
     }
-    
+
     /**
      * updatePassword
      *
@@ -76,11 +88,14 @@ class AdminResetPasswordController extends Controller
      */
     public function updatePassword(Request $request)
     {
+        $this->resetService->validatePassword($request);
+
         try {
             return $this->resetService->updatePassword($request);
 
         } catch (Exception $ex) {
-            return response('Falha ao cadastrar a nova senha', '400');
+            return back()
+                ->with('error', 'Falha ao cadastrar a nova senha.');
         }
     }
 }

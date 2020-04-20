@@ -13,6 +13,7 @@ use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Mail;
+use Carbon\Carbon;
 
 class AdminResetPasswordService
 {
@@ -24,8 +25,6 @@ class AdminResetPasswordService
      */
     public function reset(Request $request)
     {
-        $this->validateInputs($request);
-
         $user = $request->user;
         $email = $request->email;
 
@@ -37,7 +36,8 @@ class AdminResetPasswordService
                 'email' => $email,
             ];
             $this->sendEmail($data);
-            return 'Fazer o redirecionamento para tela de login com a mensagem de sucesso';
+            return redirect()->route('admin.login')
+                ->with('success','Foi enviado um email com o link para redefinição da senha.');
         }
 
         return back()
@@ -86,7 +86,7 @@ class AdminResetPasswordService
      * @param  Request $request
      * @return void
      */
-    protected function validateInputs(Request $request)
+    public function validateUserAndEmail(Request $request)
     {
         $params = [
             'user' => 'required|string',
@@ -95,6 +95,7 @@ class AdminResetPasswordService
 
         $messages = [
             'user.required' => 'É necessário informar o usuário',
+
             'email.required' => 'É necessário informar o email',
             'email.email' => 'Informe um email válido',
         ];
@@ -122,15 +123,14 @@ class AdminResetPasswordService
      */
     public function updatePassword(Request $request)
     {
-        $this->validatePassword($request);
-
         $passwordReset = PasswordReset::whereToken($request->token)->limit('1')->get();
         $userAdmin = Admin::find($passwordReset->first()->id_admin);
 
         $userAdmin->password = Hash::make($request->password);
 
         if ($userAdmin->save()) {
-            return 'Fazer tratamento para alteração realizada com sucesso';
+            return redirect()->route('admin.login')
+                ->with('success','Senha alterada com sucesso.');
         }
     }
 
@@ -140,23 +140,43 @@ class AdminResetPasswordService
      * @param  Request $request
      * @return void
      */
-    protected function validatePassword(Request $request)
+    public function validatePassword(Request $request)
     {
         $params = [
             'password' => 'required|string|between:8,16',
-            'password_confirm' => 'required|string|same:password',
+            'password_confirm' => 'same:password',
         ];
 
         $messages = [
-            'password.required' => 'É necessário informar a mesma senha nos dois campos',
+            'password.required' => 'É necessário informar a senha',
             'password.string' => 'Formato de senha inválido',
             'password.between' => 'A senha precisa conter de 8 a 16 caracteres',
 
-            'password_confirm.required' => 'É necessário informar a mesma senha nos dois campos',
             'password_confirm.same' => 'As senhas precisam ser iguais nos dois campos',
         ];
 
         $request->validate($params, $messages);
+    }
+    
+    /**
+     * validateUpdatePasswordForm
+     *
+     * @param  String $token
+     * @return boolean
+     */
+    public function validateUpdatePasswordForm(String $token)
+    {
+        $timeInMinutesForReset = 60;
+        $passwordReset = PasswordReset::whereToken($token)->limit('1')->get();
+
+        if ($passwordReset->count()) {
+            $now = Carbon::now()->subMinutes($timeInMinutesForReset);
+            $tokenCreatedAt = Carbon::create($passwordReset->first()->created_at);
+    
+            return $tokenCreatedAt->greaterThanOrEqualTo($now);
+        }
+
+        return false;
     }
 
 }
