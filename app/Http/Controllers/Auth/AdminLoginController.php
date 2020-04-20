@@ -13,18 +13,18 @@ use Illuminate\View\View;
 class AdminLoginController extends Controller
 {    
     /**
-     * loginservice
+     * loginService
      *
      * @var mixed
      */
-    private $loginservice;
+    private $loginService;
 
     /**
      * AdminLoginController constructor.
      */
-    public function __construct(AdminLoginService $loginservice)
+    public function __construct(AdminLoginService $loginService)
     {
-        $this->loginservice = $loginservice;
+        $this->loginService = $loginService;
 
         $this->middleware('guest:admin')
             ->except('logout');
@@ -44,14 +44,14 @@ class AdminLoginController extends Controller
      */
     public function login(Request $request)
     {
-        return $this->loginservice->login($request);
+        return $this->loginService->login($request);
     }
 
     /**
      * @return RedirectResponse
      */
     public function logout() {
-        return $this->loginservice->logout();
+        return $this->loginService->logout();
     }
 
 
