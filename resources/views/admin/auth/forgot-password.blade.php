@@ -38,7 +38,7 @@
                                                placeholder="Informe o e-mail" value="{{ old('email') }}">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">Resetar Senha</button>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block">Enviar Senha</button>
 
                                 </form>
 
