@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Services\AdminUsersService;
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
@@ -12,7 +12,15 @@ class AdminController extends Controller
         $this->middleware('auth:admin');
     }
 
-    public function index() {
+    public function index()
+    {
         return view('admin.home');
+    }
+
+    public function showUsersPage()
+    {
+        $users = AdminUsersService::getAllUsers();
+        return view('admin.users.users')
+            ->with('users', $users);
     }
 }

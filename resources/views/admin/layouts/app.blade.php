@@ -40,9 +40,6 @@
 </a>
 
 
-@include('admin.layouts.modals.logout-modal')
-
-
 <!-- Bootstrap core JavaScript-->
 <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
