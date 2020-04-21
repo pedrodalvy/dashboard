@@ -17,7 +17,7 @@ class CreateResumeProfileTable extends Migration
             $table->id();
             $table->string('name')->comment('Complete name');
             $table->string('description')->comment('Description about me');
-            $table->string('resume')->comment('Link of resume');
+            $table->string('resume')->comment('Link of resume')->nullable();
             $table->timestamps();
         });
     }
