@@ -26,6 +26,8 @@
 
 <body class="bg-gradient-primary">
 
+@include('admin.layouts.particle-js')
+
 <div class="container">
 
     @yield('content')
