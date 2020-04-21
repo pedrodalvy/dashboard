@@ -17,6 +17,8 @@ use Illuminate\Database\Eloquent\Model;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\PasswordReset whereEmail($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\PasswordReset whereToken($value)
  * @mixin \Eloquent
+ * @property int $id_admin ID DO USUARIO ADMIN
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\PasswordReset whereIdAdmin($value)
  */
 class PasswordReset extends Model
 {

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 /**
  * App\Admin
@@ -31,10 +32,20 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Admin whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Admin whereUser($value)
  * @mixin \Eloquent
+ * @property int $active 1 = active | 0 = inactive
+ * @property \Illuminate\Support\Carbon|null $deleted_at
+ * @method static bool|null forceDelete()
+ * @method static \Illuminate\Database\Query\Builder|\App\Admin onlyTrashed()
+ * @method static bool|null restore()
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Admin whereActive($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Admin whereDeletedAt($value)
+ * @method static \Illuminate\Database\Query\Builder|\App\Admin withTrashed()
+ * @method static \Illuminate\Database\Query\Builder|\App\Admin withoutTrashed()
  */
 class Admin extends Authenticatable
 {
     use Notifiable;
+    use SoftDeletes;
 
     protected $guard = 'admin';
 
