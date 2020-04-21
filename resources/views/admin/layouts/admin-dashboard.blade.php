@@ -14,7 +14,7 @@
             @include('admin.layouts.topbar')
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container">
 
                 @yield('content')
 

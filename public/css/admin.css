@@ -1,3 +1,7 @@
 table tbody tr:last-of-type {
     border-bottom: 1px solid #e3e6f0;
 }
+
+.cursor-pointer {
+    cursor: pointer;
+}

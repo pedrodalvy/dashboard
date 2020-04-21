@@ -16,7 +16,16 @@ Route::prefix('admin')->group(function () {
 
     Route::get('users', 'Admin\AdminController@showUsersPage')
         ->name('admin.users');
+
+
+
+    // Rotas para manutenção do corrículo
+    Route::prefix('resume')->group(function () {
+        Route::get('profile', 'Resume\ResumeProfileController@index')
+        ->name('resume.profile');
+    });
     
+
 
     // Abre o formulário de login
     Route::get('login', 'Auth\AdminLoginController@index')

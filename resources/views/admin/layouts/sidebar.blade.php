@@ -22,16 +22,29 @@
 
     <!-- Nav Item - Pages Collapse Menu -->
     <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-           aria-expanded="true" aria-controls="collapseTwo">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers"
+           aria-expanded="true" aria-controls="collapseUsers">
            <i class="fas fa-users"></i>
             <span>Usuários</span>
         </a>
-        <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+        <div id="collapseUsers" class="collapse" aria-labelledby="headingUsers" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
-                <h6 class="collapse-header">Cadstro de usuários:</h6>
+                <h6 class="collapse-header">Cadastro de usuários:</h6>
                 <a class="collapse-item load" href="{{ route('admin.users') }}">Todos</a>
                 <a class="collapse-item load" href="#">Novo</a>
+            </div>
+        </div>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseResume"
+           aria-expanded="true" aria-controls="collapseResume">
+           <i class="fas fa-file-alt"></i>
+            <span>Currículo</span>
+        </a>
+        <div id="collapseResume" class="collapse" aria-labelledby="headingResume" data-parent="#accordionSidebar">
+            <div class="bg-white py-2 collapse-inner rounded">
+                <h6 class="collapse-header">Manutenção do Currículo:</h6>
+                <a class="collapse-item load" href="{{ route('resume.profile') }}">Alterar perfil</a>
             </div>
         </div>
     </li>

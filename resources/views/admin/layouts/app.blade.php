@@ -50,6 +50,9 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
+@hasSection ('script')
+    @yield('script')
+@endif
 
 @include('admin.layouts.loading')
 
