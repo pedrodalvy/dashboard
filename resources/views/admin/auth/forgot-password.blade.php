@@ -34,18 +34,20 @@
 
                                     <div class="form-group">
                                         <input class="form-control form-control-user @error('email') is-invalid @enderror"
-                                               type="email" id="email" name="email" aria-describedby="email"
+                                               type="text" id="email" name="email" aria-describedby="email"
                                                placeholder="Informe o e-mail" value="{{ old('email') }}">
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">Enviar Senha</button>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block load">
+                                        Enviar Senha
+                                    </button>
 
                                 </form>
 
                                 <hr>
 
                                 <div class="text-center">
-                                    <a class="small" href="{{ route('admin.login') }}">Voltar para tela de login</a>
+                                    <a class="small load" href="{{ route('admin.login') }}">Voltar para tela de login</a>
                                 </div>
 
                             </div>

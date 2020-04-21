@@ -42,15 +42,16 @@
                                         aria-describedby="password_confirm" placeholder="Repita a senha">
                                 </div>
 
-                                <button type="submit" class="btn btn-primary btn-user btn-block">Atualizar
-                                    Senha</button>
+                                <button type="submit" class="btn btn-primary btn-user btn-block load">
+                                    Atualizar Senha
+                                </button>
 
                             </form>
 
                             <hr>
 
                             <div class="text-center">
-                                <a class="small" href="{{ route('admin.login') }}">Ir para tela de login</a>
+                                <a class="small load" href="{{ route('admin.login') }}">Ir para tela de login</a>
                             </div>
 
                         </div>

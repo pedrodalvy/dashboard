@@ -44,13 +44,13 @@
                                         </div>
                                     </div>
 
-                                    <button type="submit" class="btn btn-primary btn-user btn-block">Login</button>
+                                    <button type="submit" class="btn btn-primary btn-user btn-block load">Login</button>
 
                                 </form>
 
                                 <hr>
                                 <div class="text-center">
-                                    <a class="small" href="{{ route('admin.password.form') }}">Esqueceu a senha?</a>
+                                    <a class="small load" href="{{ route('admin.password.form') }}">Esqueceu a senha?</a>
                                 </div>
                             </div>
                         </div>

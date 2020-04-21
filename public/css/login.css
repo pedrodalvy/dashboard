@@ -1,5 +1,11 @@
+.container {
+    -webkit-backface-visibility: hidden;
+    -moz-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+
 .row-card-body {
-    height: 530px;
+    min-height: 530px;
 }
 
 .alert-danger--form {
