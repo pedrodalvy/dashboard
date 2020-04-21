@@ -6,7 +6,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-        <a class="nav-link" href="{{ route('admin.home') }}">
+        <a class="nav-link load" href="{{ route('admin.home') }}">
             <i class="fas fa-home"></i>
             <span>Home</span>
         </a>
@@ -30,8 +30,8 @@
         <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Cadstro de usuários:</h6>
-                <a class="collapse-item" href="{{ route('admin.users') }}">Todos</a>
-                <a class="collapse-item" href="#">Novo</a>
+                <a class="collapse-item load" href="{{ route('admin.users') }}">Todos</a>
+                <a class="collapse-item load" href="#">Novo</a>
             </div>
         </div>
     </li>

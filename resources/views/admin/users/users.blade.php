@@ -13,6 +13,7 @@
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Lista de usuários</h6>
     </div>
+    
     <div class="card-body">
         <div class="table-responsive">
             <table class="table table-hover table-striped" id="dataTable" width="100%" cellspacing="0">
@@ -42,4 +43,14 @@
     </div>
 </div>
 
+<div class="row">
+    <div class="col text-right mb-4">
+        <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0">
+            <span class="icon text-white-50">
+              <i class="fas fa-user-plus"></i>
+            </span>
+            <span class="text">Novo usuário</span>
+          </a>
+    </div>
+    </div>
 @endsection

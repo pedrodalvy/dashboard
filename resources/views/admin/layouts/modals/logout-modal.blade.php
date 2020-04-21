@@ -11,7 +11,7 @@
             <div class="modal-body">Clique em "Sair" logo abaixo caso esteja pronto para encerrar sua sessão atual.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <a class="btn btn-primary" href="{{ route('admin.logout') }}">Sair</a>
+                <a class="btn btn-primary load" href="{{ route('admin.logout') }}">Sair</a>
             </div>
         </div>
     </div>
