@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
 
@@ -54,6 +54,7 @@
     @yield('script')
 @endif
 
+@include('admin.layouts.alert')
 @include('admin.layouts.loading')
 
 </body>

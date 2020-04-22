@@ -16,7 +16,7 @@ class CreateResumeProfileTable extends Migration
         Schema::create('resume_profile', function (Blueprint $table) {
             $table->id();
             $table->string('name')->comment('Complete name');
-            $table->string('description')->comment('Description about me');
+            $table->text('description')->comment('Description about me');
             $table->string('resume')->comment('Link of resume')->nullable();
             $table->timestamps();
         });

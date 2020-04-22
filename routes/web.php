@@ -4,8 +4,8 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return 'home';
-})->name('home');
+    return 'resume';
+})->name('resume');
 
 
 
@@ -22,7 +22,10 @@ Route::prefix('admin')->group(function () {
     // Rotas para manutenção do corrículo
     Route::prefix('resume')->group(function () {
         Route::get('profile', 'Resume\ResumeProfileController@index')
-        ->name('resume.profile');
+            ->name('resume.profile');
+
+        Route::post('profile', 'Resume\ResumeProfileController@update')
+            ->name('resume.profile.update');
     });
     
 
