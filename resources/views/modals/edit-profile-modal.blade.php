@@ -11,7 +11,7 @@
             <div class="modal-body">
 
                 <form method="POST" action="{{ route('resume.profile.update') }}" autocomplete="off"
-                    enctype="multipart/form-data">
+                    enctype="multipart/form-data" id="editProfileForm">
                     @csrf
 
                     <div class="row">
@@ -57,12 +57,12 @@
                         <div class="col-md-6 mb-3">
                             <label for="linkedin">Linkedin</label>
                             <input type="text" class="form-control" name="linkedin" id="linkedin" placeholder=""
-                                value="{{ $data->linkedin }}" required>
+                                value="{{ $data->linkedin }}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="github">Github</label>
                             <input type="text" class="form-control" name="github" id="github" placeholder=""
-                                value="{{ $data->github }}" required>
+                                value="{{ $data->github }}">
                         </div>
                     </div>
 
@@ -70,7 +70,7 @@
                         <div class="col-md-6 mb-3">
                             <label for="site">Site</label>
                             <input type="text" class="form-control" name="site" id="site" placeholder=""
-                                value="{{ $data->site }}" required>
+                                value="{{ $data->site }}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="resume">Currículo</label>
@@ -93,15 +93,13 @@
                             </div>
                         </div>
                     </div>
-
-
-                    <button class="btn btn-primary load" type="submit">Gravar</button>
                 </form>
 
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <a class="btn btn-primary load" href="#">Gravar</a>
+                <button type="submit" form="editProfileForm" class="btn btn-primary load" 
+                    href="javascript:void(0)" onclick="$('#editProfile').modal('hide');">Gravar</button>
             </div>
         </div>
     </div>

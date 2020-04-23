@@ -27,11 +27,19 @@ class ResumeProfileService
 
         $profile->name = $request->name;
         $profile->description = $request->description;
+        $profile->email = $request->email;
+        $profile->fone = $request->fone;
+        $profile->address = $request->address;
+        $profile->function = $request->function;
+        $profile->pricing = $request->pricing;
+        $profile->linkedin = $request->linkedin;
+        $profile->github = $request->github;
+        $profile->site = $request->site;
 
         if ($request->hasFile('resume')) {
             $profile->resume = $this->saveFile($request);
         }
-
+        
         if ($profile->save()) {
             return back()->with('success', 'Perfil alterado com sucesso.');
         }
@@ -54,6 +62,14 @@ class ResumeProfileService
             'name' => 'required|string',
             'description' => 'required',
             'resume' => 'file|max:2500|mimes:pdf',
+            'email' => 'required|email',
+            'fone' => 'required|string',
+            'address' => 'required|string',
+            'function' => 'required|string',
+            'pricing' => 'required|numeric',
+            'linkedin' => 'nullable|url',
+            'github' => 'nullable|url',
+            'site' => 'nullable|url',
         ];
         $messages = [
             'name.required' => 'O nome precisa ser informado',
@@ -64,6 +80,25 @@ class ResumeProfileService
             'resume.file' => 'Envie um currículo válido',
             'resume.max' => 'O currículo não pode exceder 25MB',
             'resume.mimes' => 'O formato do currículo deve ser PDF',
+
+            'email.required' => 'É necessário informar o email',
+            'email.email' => 'Informe um e-mail válido',
+
+            'fone.required' => 'É necessário informar o telefone',
+            'fone.string' => 'Informe um telefone válido',
+
+            'address.required' => 'É necessário informar o endereço',
+            'address.string' => 'Informe um endereço válido',
+
+            'function.required' => 'É necessário informar a profissão',
+            'function.string' => 'Informe uma profissão válido',
+
+            'pricing.required' => 'É necessário informar a pretensão salarial',
+            'pricing.string' => 'Informe uma pretensão salarial válido',
+
+            'linkedin.url' => 'O endereço do Linkedin está inválido',
+            'github.url' => 'O endereço do Github está inválido',
+            'site.url' => 'O endereço do site está inválido',
         ];
 
         return $request->validate($rules, $messages);

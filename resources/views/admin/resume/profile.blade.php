@@ -29,7 +29,7 @@
                 </tr>
 
                 <tr>
-                    <th scope="row" class="text-right">Contato</th>
+                    <th scope="row" class="text-right">Telefone</th>
                     <td>{{ $data->fone }}</td>
                 </tr>
 
@@ -67,10 +67,10 @@
                     <th scope="row" class="text-right">Descrição</th>
                     <td>{{ $data->description }}</td>
                 </tr>
-                
+
                 <tr>
                     <th scope="row" class="text-right">Currículo</th>
-                    <td>teste</td>
+                    <td>Criar botão de download</td>
                 </tr>
             </tbody>
         </table>
