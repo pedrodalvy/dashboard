@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\User;
 
 use App\Services\AdminUsersService;
 use App\Http\Controllers\Controller;
 
-class AdminController extends Controller
+class UserController extends Controller
 {
     public function __construct()
     {
@@ -14,6 +14,8 @@ class AdminController extends Controller
 
     public function index()
     {
-        return view('admin.home');
+        $users = AdminUsersService::getAllUsers();
+        return view('users.users')
+            ->with('users', $users);
     }
 }

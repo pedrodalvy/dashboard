@@ -17,6 +17,12 @@
         };
     }
 
+    var screenWidth = "600px";
+
+    if ($(window).width() <= 600) {
+        screenWidth = ($(window).width() - 20) + "px";
+    }
+
     var notice = PNotify.alert({
         text: '{!! $message !!}',
         type: '{{ $type }}',
@@ -27,7 +33,7 @@
                 sticker: false
             }
         },
-        width: "600px",
+        width: screenWidth,
         stack: window.stackTopCenter
     });
 

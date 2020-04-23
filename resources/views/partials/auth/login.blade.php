@@ -1,4 +1,4 @@
-@extends('admin.auth.layout')
+@extends('auth.layout')
 
 @section('content')
 
@@ -15,7 +15,7 @@
                         <div class="col-lg-6">
                             <div class="p-5">
 
-                                @include('admin.auth.alert')
+                                @include('partials.auth.alert')
 
                                 <div class="text-center">
                                     <h1 class="h4 text-gray-900 mb-4">Bem Vindo</h1>

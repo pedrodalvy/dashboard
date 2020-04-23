@@ -205,4 +205,4 @@
 </nav>
 <!-- End of Topbar -->
 
-@include('admin.layouts.modals.logout-modal')
+@include('modals.logout-modal')

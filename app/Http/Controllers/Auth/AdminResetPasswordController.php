@@ -36,7 +36,7 @@ class AdminResetPasswordController extends Controller
      */
     public function showForm()
     {
-        return view('admin.auth.forgot-password');
+        return view('partials.auth.forgot-password');
     }
 
     /**
@@ -69,7 +69,7 @@ class AdminResetPasswordController extends Controller
         $inTime = $this->resetService->validateUpdatePasswordForm($token);
 
         if ($inTime) {
-            return view('admin.auth.reset-pass-form')
+            return view('partials.auth.reset-password')
                 ->with('token', $token);
         }
 

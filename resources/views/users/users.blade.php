@@ -45,7 +45,8 @@
 
 <div class="row">
     <div class="col text-right mb-4">
-        <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0">
+        <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0" data-toggle="modal"
+            data-target="#newUser">
             <span class="icon text-white-50">
               <i class="fas fa-user-plus"></i>
             </span>
@@ -53,4 +54,6 @@
           </a>
     </div>
     </div>
+
+@include('modals.new-user-modal')
 @endsection

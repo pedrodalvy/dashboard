@@ -3,7 +3,7 @@
 @section('wrapper')
 <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
     
-    @include('admin.layouts.sidebar')
+    @include('partials.admin.sidebar')
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -11,7 +11,7 @@
         <!-- Main Content -->
         <div id="content">
 
-            @include('admin.layouts.topbar')
+            @include('partials.admin.topbar')
 
             <!-- Begin Page Content -->
             <div class="container">
@@ -24,7 +24,7 @@
         </div>
         <!-- End of Main Content -->
 
-        @include('admin.layouts.footer')
+        @include('partials.admin.footer')
 
     </div>
     <!-- End of Content Wrapper -->

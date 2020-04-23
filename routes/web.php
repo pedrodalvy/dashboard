@@ -14,7 +14,7 @@ Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@index')
         ->name('admin.home');
 
-    Route::get('users', 'Admin\AdminController@showUsersPage')
+    Route::get('users', 'User\UserController@index')
         ->name('admin.users');
 
 

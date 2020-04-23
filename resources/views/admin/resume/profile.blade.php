@@ -14,39 +14,80 @@
         <h6 class="m-0 font-weight-bold text-primary">Alterar dados do perfil</h6>
     </div>
 
-    <div class="card-body">
+    <div class="card-body col-12">
 
-    <form method="POST" action="{{ route('resume.profile.update') }}" autocomplete="off" enctype="multipart/form-data">
-        @csrf
-            <div class="row">
-                <div class="col-md-6 mb-3">
-                    <label for="name">Nome Completo</label>
-                    <input type="text" class="form-control" name="name" id="name"
-                           placeholder="" value="{{ $data->name }}" required>
-                </div>
+        <table class="table table-borderless table-hover table-responsive-md">
+            <tbody>
+                <tr>
+                    <th scope="row" class="text-right ">Nome</th>
+                    <td>{{ $data->name }}</td>
+                </tr>
 
-                <div class="col-md-6 mb-3">
-                    <label for="resume">Currículo</label>
-                    <div class="custom-file cursor-pointer">
-                        <input type="file" class="custom-file-input cursor-pointer" id="resume" name="resume" hidden>
-                        <label class="custom-file-label cursor-pointer" for="resume" data-browse="Buscar">
-                            Fazer upload do arquivo
-                        </label>
-                      </div>
-                </div>
+                <tr>
+                    <th scope="row" class="text-right">E-Mail</th>
+                    <td>{{ $data->email }}</td>
+                </tr>
 
-            </div>
-            <div class="form-group mb-3">
-                <label for="description">Descrição pessoal</label>
-                <textarea class="form-control" id="description" rows="3" name="description"
-                    required>{{ $data->description }}</textarea>
-            </div>
+                <tr>
+                    <th scope="row" class="text-right">Contato</th>
+                    <td>{{ $data->fone }}</td>
+                </tr>
 
-            <button class="btn btn-primary load" type="submit">Gravar</button>
-        </form>
+                <tr>
+                    <th scope="row" class="text-right">Endereço</th>
+                    <td>{{ $data->address }}</td>
+                </tr>
 
+                <tr>
+                    <th scope="row" class="text-right">Profissão</th>
+                    <td>{{ $data->function }}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row" class="text-right text-nowrap">Pretensão salarial</th>
+                    <td>{{ $data->pricing }}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row" class="text-right">Linkedin</th>
+                    <td>{{ $data->linkedin ?? 'Não informado' }}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row" class="text-right">Github</th>
+                    <td>{{ $data->github ?? 'Não informado' }}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row" class="text-right">Site</th>
+                    <td>{{ $data->site ?? 'Não informado' }}</td>
+                </tr>
+
+                <tr>
+                    <th scope="row" class="text-right">Descrição</th>
+                    <td>{{ $data->description }}</td>
+                </tr>
+                
+                <tr>
+                    <th scope="row" class="text-right">Currículo</th>
+                    <td>teste</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="col mb-0 mt-3 ml-0 p-0">
+            <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0" data-toggle="modal"
+                data-target="#editProfile">
+                <span class="icon text-white-50">
+                    <i class="fas fa-pen"></i>
+                </span>
+                <span class="text">Editar</span>
+            </a>
+        </div>
     </div>
 </div>
+
+@include('modals.edit-profile-modal')
 
 @endsection
 
