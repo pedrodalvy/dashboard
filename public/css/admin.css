@@ -13,3 +13,10 @@ table tbody tr:last-of-type {
     }
   }
 
+label.is-invalid {
+    width: 100%;
+    margin-top: .25rem;
+    font-size: 80%;
+    color: #e74a3b;
+    margin-bottom: 0;
+}

@@ -62,7 +62,18 @@
 </style>
 
 <script>
-    $('.load').click(function() {
+    $('.load').click(function () {
         $('.loading').show();
     });
+
+    $('.onSubmit-load').click(function (e) {
+        e.preventDefault();
+        if ($('form').find('.error').length == 0 || $('form').find('.error').length == null) {
+            $('.modal').modal('hide');
+            $('form').submit();
+            $('.loading').show();
+        }
+
+    });
+
 </script>

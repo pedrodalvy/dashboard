@@ -11,18 +11,18 @@
             <div class="modal-body">
 
                 <form method="POST" action="{{ route('resume.profile.update') }}" autocomplete="off"
-                    enctype="multipart/form-data" id="editProfileForm">
+                    enctype="multipart/form-data" id="editProfileForm" class="load-afterValidate">
                     @csrf
 
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="name">Nome Completo</label>
                             <input type="text" class="form-control" name="name" id="name" placeholder=""
-                                value="{{ $data->name }}" required>
+                                value="{{ $data->name }}">
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="email">E-Mail</label>
-                            <input type="mail" class="form-control" name="email" id="email" placeholder=""
+                            <input type="text" class="form-control" name="email" id="email" placeholder=""
                                 value="{{ $data->email }}" required>
                         </div>
                     </div>
@@ -30,7 +30,7 @@
                     <div class="row">
                         <div class="col-md-6 mb-3">
                             <label for="fone">Telefone</label>
-                            <input type="text" class="form-control" name="fone" id="fone" placeholder=""
+                            <input type="text" class="form-control fone" name="fone" id="fone" placeholder=""
                                 value="{{ $data->fone }}" required>
                         </div>
                         <div class="col-md-6 mb-3">
@@ -48,7 +48,7 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="pricing">Pretensão salarial</label>
-                            <input type="text" class="form-control" name="pricing" id="pricing" placeholder=""
+                            <input type="text" class="form-control money" name="pricing" id="pricing" placeholder=""
                                 value="{{ $data->pricing }}" required>
                         </div>
                     </div>
@@ -98,8 +98,8 @@
             </div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <button type="submit" form="editProfileForm" class="btn btn-primary load" 
-                    href="javascript:void(0)" onclick="$('#editProfile').modal('hide');">Gravar</button>
+                <button type="submit" form="editProfileForm" class="btn btn-primary" 
+                    href="javascript:void(0)">Gravar</button>
             </div>
         </div>
     </div>

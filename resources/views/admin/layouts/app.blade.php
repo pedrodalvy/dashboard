@@ -47,8 +47,18 @@
 <!-- Core plugin JavaScript-->
 <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
+<!-- jQuery Validation-->
+<script src="{{ asset('vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('vendor/jquery-validation/localization/messages_pt_BR.js') }}"></script>
+<script src="{{ asset('js/validate.js') }}"></script>
+
+<!-- Jquery Mask -->
+<script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
+<script src="{{ asset('js/mask.js') }}"></script>
+
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+
 
 @hasSection ('script')
     @yield('script')
