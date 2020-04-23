@@ -66,7 +66,7 @@ class ResumeProfileService
             'fone' => 'required|string',
             'address' => 'required|string',
             'function' => 'required|string',
-            'pricing' => 'required|numeric',
+            'pricing' => 'required',
             'linkedin' => 'nullable|url',
             'github' => 'nullable|url',
             'site' => 'nullable|url',
@@ -94,7 +94,6 @@ class ResumeProfileService
             'function.string' => 'Informe uma profissão válida',
 
             'pricing.required' => 'É necessário informar a pretensão salarial',
-            'pricing.numeric' => 'Informe uma pretensão salarial válida',
 
             'linkedin.url' => 'O endereço do Linkedin está inválido',
             'github.url' => 'O endereço do Github está inválido',

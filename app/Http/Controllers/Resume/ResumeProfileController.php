@@ -24,6 +24,10 @@ class ResumeProfileController extends Controller
 
     public function update(Request $request)
     {
+        // TODO encontrar outra forma para formatar o número
+        $request->pricing = preg_replace('/\./', '', $request->pricing);
+        $request->pricing = preg_replace('/,/', '.', $request->pricing);
+        
         $this->resumeProfile->validateInputProfile($request);
 
         try {
