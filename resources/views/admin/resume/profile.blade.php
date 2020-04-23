@@ -16,7 +16,7 @@
 
     <div class="card-body col-12">
 
-        <table class="table table-borderless table-hover table-responsive-md">
+        <table class="table table-borderless table-hover table-responsive-md table-resume-profile">
             <tbody>
                 <tr>
                     <th scope="row" class="text-right ">Nome</th>
@@ -44,7 +44,7 @@
                 </tr>
 
                 <tr>
-                    <th scope="row" class="text-right text-nowrap">Pretensão salarial</th>
+                    <th scope="row" class="text-right">Pretensão salarial</th>
                     <td>{{ $data->pricing }}</td>
                 </tr>
 
