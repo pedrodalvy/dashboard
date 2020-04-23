@@ -91,10 +91,10 @@ class ResumeProfileService
             'address.string' => 'Informe um endereço válido',
 
             'function.required' => 'É necessário informar a profissão',
-            'function.string' => 'Informe uma profissão válido',
+            'function.string' => 'Informe uma profissão válida',
 
             'pricing.required' => 'É necessário informar a pretensão salarial',
-            'pricing.string' => 'Informe uma pretensão salarial válido',
+            'pricing.numeric' => 'Informe uma pretensão salarial válida',
 
             'linkedin.url' => 'O endereço do Linkedin está inválido',
             'github.url' => 'O endereço do Github está inválido',
