@@ -45,7 +45,7 @@
 
                 <tr>
                     <th scope="row" class="text-right">Pretensão salarial</th>
-                    <td>{{ $data->pricing }}</td>
+                    <td>R$ {{ number_format($data->pricing, 2, ',', '.') }}</td>
                 </tr>
 
                 <tr>
