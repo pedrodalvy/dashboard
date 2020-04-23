@@ -48,8 +48,13 @@
                         </div>
                         <div class="col-md-6 mb-3">
                             <label for="pricing">Pretensão salarial</label>
-                            <input type="text" class="form-control money" name="pricing" id="pricing" placeholder=""
-                                value="{{ $data->pricing }}" required>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="cifrao">R$</span>
+                                </div>
+                                <input type="text" class="form-control money" name="pricing" id="pricing" placeholder=""
+                                    value="{{ $data->pricing }}" required aria-describedby="cifrao">
+                            </div>
                         </div>
                     </div>
 
