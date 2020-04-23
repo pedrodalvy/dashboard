@@ -20,20 +20,19 @@
     }
 
     .loading {
-        position: absolute;
+        position: fixed;
         width: 100vw;
         height: 100vh;
         display: none;
         overflow: hidden;
         background: none;
-        top: 0%;
-        left: 0%;
+        top: 0;
+        left: 0;
         background-color: rgba(0, 0, 0, 0.7);
         z-index: 100;
     }
 
     .spinner div {
-        /* position: absolute; */
         margin: auto;
         margin-top: calc(50vh - 30px);
         animation: spinner 0.7s linear infinite;
