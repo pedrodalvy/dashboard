@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call([
             ResumeProfileSeeder::class,
             AdminSeeder::class,
+            ResumeExperienceSeeder::class,
         ]);
     }
 }
