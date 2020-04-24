@@ -28,7 +28,7 @@
             </a>
             <!-- Card Content - Collapse -->
             <div class="collapse show" id="collapse{{ $experience->id }}" style="">
-                <div class="card-body">
+                <div class="card-body pb-0">
                     <div class="row">
                         <div class="col-md-8 mb-2">
                             <span class="font-weight-bold">Empresa: </span> {{ $experience->company }}
@@ -45,7 +45,7 @@
                     <span class="font-weight-bold">Descrição da Função: </span>
                     {{ $experience->job_resume }}
 
-                    <div class="row mt-2 mb-0 d-flex flex-row-reverse">
+                    <div class="row mt-2 mr-md-2 mb-2 d-flex flex-row-reverse">
                         <div class="btn-group" role="group" aria-label="Basic example">
                             <button type="button" class="btn btn-sm btn-secondary">Editar</button>
                             <button type="button" class="btn btn-sm btn-secondary">Remover</button>
