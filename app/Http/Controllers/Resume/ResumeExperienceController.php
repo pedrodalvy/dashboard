@@ -4,13 +4,16 @@ namespace App\Http\Controllers\Resume;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Services\Resume\ExperienceService;
 use Exception;
 
 class ResumeExperienceController extends Controller
 {
+    private $resumeExperience;
 
-    public function __construct()
+    public function __construct(ExperienceService $resumeExperience)
     {
+        $this->resumeExperience = $resumeExperience;
         $this->middleware('auth:admin');
     }
 
@@ -21,7 +24,11 @@ class ResumeExperienceController extends Controller
      */
     public function index()
     {
-        //
+        try {
+            return $this->resumeExperience->showExperiences();
+        } catch (Exception $ex) {
+            return back()->with('error', 'Não foi possível consultar as experiencias.');
+        }
     }
 
     /**

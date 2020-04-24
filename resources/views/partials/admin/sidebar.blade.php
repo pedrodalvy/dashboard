@@ -45,6 +45,7 @@
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manutenção do Currículo:</h6>
                 <a class="collapse-item load" href="{{ route('resume.profile') }}">Perfil</a>
+                <a class="collapse-item load" href="{{ route('experience.index') }}">Experiência</a>
             </div>
         </div>
     </li>

@@ -12,6 +12,6 @@ class ResumeExperienceSeeder extends Seeder
      */
     public function run()
     {
-        factory(ResumeExperience::class, 20)->create();
+        factory(ResumeExperience::class, 3)->create();
     }
 }
