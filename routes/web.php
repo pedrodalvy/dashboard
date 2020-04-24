@@ -19,7 +19,7 @@ Route::prefix('admin')->group(function () {
 
 
 
-    // Rotas para manutenção do corrículo
+    // Rotas para manutenção do currículo
     Route::prefix('resume')->group(function () {
         Route::get('profile', 'Resume\ResumeProfileController@index')
             ->name('resume.profile');
@@ -28,6 +28,9 @@ Route::prefix('admin')->group(function () {
             ->name('resume.profile.update');
     });
     
+
+    // Rotas para visualização e manutenção das experiencias
+    Route::resource('experience', 'Resume\ResumeExperienceController');
 
 
     // Abre o formulário de login
