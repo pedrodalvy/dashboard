@@ -44,7 +44,7 @@
         <div id="collapseResume" class="collapse" aria-labelledby="headingResume" data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Manutenção do Currículo:</h6>
-                <a class="collapse-item load" href="{{ route('resume.profile') }}">Alterar perfil</a>
+                <a class="collapse-item load" href="{{ route('resume.profile') }}">Perfil</a>
             </div>
         </div>
     </li>
