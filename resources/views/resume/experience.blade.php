@@ -8,8 +8,7 @@
     Relação com todas as experiências profissionais cadastradas.
 </p>
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
+<div class="card border-left-primary shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Experiências</h6>
     </div>
@@ -21,13 +20,15 @@
         <div class="card shadow mb-1">
             <!-- Card Header - Accordion -->
             <a href="#collapse{{ $experience->id }}" class="d-block card-header py-3" data-toggle="collapse"
-                role="button" aria-expanded="true" aria-controls="collapse{{ $experience->id }}">
+                role="button" aria-expanded="{{ $loop->iteration  == 1 ? 'true' : 'false' }}"
+                aria-controls="collapse{{ $experience->id }}">
 
                 <span class="font-weight-bold">Função: </span> {{ $experience->job_title }}
 
             </a>
             <!-- Card Content - Collapse -->
-            <div class="collapse show" id="collapse{{ $experience->id }}" style="">
+            <div class="collapse {{ $loop->iteration  == 1 ? 'show' : '' }}" id="collapse{{ $experience->id }}"
+                style="">
                 <div class="card-body pb-0">
                     <div class="row">
                         <div class="col-md-8 mb-2">
@@ -45,13 +46,25 @@
                     <span class="font-weight-bold">Descrição da Função: </span>
                     {{ $experience->job_resume }}
 
-                    <div class="row mt-2 mr-md-2 mb-2 d-flex flex-row-reverse">
-                        <div class="btn-group" role="group" aria-label="Basic example">
-                            <button type="button" class="btn btn-sm btn-secondary">Editar</button>
-                            <button type="button" class="btn btn-sm btn-secondary">Remover</button>
-                          </div>
+                    <div class="row mt-2 mr-md-2 mb-3 d-flex flex-row-reverse">
+
+                        <button class="btn btn-sm btn-danger btn-icon-split ml-2">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            <span class="text">Excluir</span>
+                        </button>
+
+                        <button class="btn btn-sm btn-primary btn-icon-split ml-2">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                            <span class="text">Editar</span>
+                        </button>
+
+                        
                     </div>
-                    
+
                 </div>
             </div>
         </div>

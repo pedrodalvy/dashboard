@@ -8,8 +8,7 @@
     Visualização do perfil do currículo.
 </p>
 
-<!-- DataTales Example -->
-<div class="card shadow mb-4">
+<div class="card border-left-primary  shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Alterar dados do perfil</h6>
     </div>
