@@ -12,4 +12,11 @@ class ExperienceService
         return view('resume.experience')
             ->with('experiences', $experiences);
     }
+
+    public function editExeperience($id)
+    {
+        $exeperience = ResumeExperience::findOrFail($id);
+
+        return $exeperience->toJson();
+    }
 }

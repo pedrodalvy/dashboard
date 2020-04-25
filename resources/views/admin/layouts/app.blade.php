@@ -59,13 +59,14 @@
 <!-- Custom scripts for all pages-->
 <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
 
+@include('admin.layouts.loading')
 
 @hasSection ('script')
     @yield('script')
 @endif
 
 @include('admin.layouts.alert')
-@include('admin.layouts.loading')
+
 
 </body>
 

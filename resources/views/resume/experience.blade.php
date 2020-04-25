@@ -48,14 +48,14 @@
 
                     <div class="row mt-2 mr-md-2 mb-3 d-flex flex-row-reverse">
 
-                        <button class="btn btn-sm btn-danger btn-icon-split ml-2">
+                        <button class="btn btn-sm btn-danger btn-icon-split ml-2" id="removeExperience">
                             <span class="icon text-white-50">
                                 <i class="fas fa-trash"></i>
                             </span>
                             <span class="text">Excluir</span>
                         </button>
 
-                        <button class="btn btn-sm btn-primary btn-icon-split ml-2">
+                        <button class="btn btn-sm btn-primary btn-icon-split ml-2" id="editExperience">
                             <span class="icon text-white-50">
                                 <i class="fas fa-pencil-alt"></i>
                             </span>
@@ -70,11 +70,12 @@
         </div>
 
         @empty
-
+            <h4 class="text-center">Não existem experiências cadastradas para este perfil</h4>
         @endforelse
 
-
     </div>
+
+    @include('modals.form-experience-modal')
 </div>
 
 @endsection
