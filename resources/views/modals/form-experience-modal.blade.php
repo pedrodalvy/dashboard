@@ -94,8 +94,8 @@ $('#date_out_chek').click(function (){
 })
 
 let openEditModal = function (id) {
+   $('.loading').show();
     getExperienceById(id);
-    $('.loading').show();
 }
 
 

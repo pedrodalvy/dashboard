@@ -1,6 +1,15 @@
 <!-- Sidebar -->
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
+    <div class="m-0 sidebar-logo">
+        <a class="d-flex align-items-center justify-content-center" href="{{ route('admin.home') }}">
+            <div class="sidebar-brand-icon">
+            <img src="{{ asset('img/top_logo_transparent_background.png') }}" alt="" height="110px">
+            </div>
+          </a>
+    </div>
+    
+
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
