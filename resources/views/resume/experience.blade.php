@@ -55,14 +55,15 @@
                             <span class="text">Excluir</span>
                         </button>
 
-                        <button class="btn btn-sm btn-primary btn-icon-split ml-2" onclick="openEditModal({{ $experience->id }})">
+                        <button class="btn btn-sm btn-primary btn-icon-split ml-2"
+                            onclick="openEditModal({{ $experience->id }})">
                             <span class="icon text-white-50">
                                 <i class="fas fa-pencil-alt"></i>
                             </span>
                             <span class="text">Editar</span>
                         </button>
 
-                        
+
                     </div>
 
                 </div>
@@ -70,12 +71,24 @@
         </div>
 
         @empty
-            <h4 class="text-center">Não existem experiências cadastradas para este perfil</h4>
+        <h4 class="text-center">Não existem experiências cadastradas para este perfil</h4>
         @endforelse
 
     </div>
 
-    @include('modals.form-experience-modal')
 </div>
 
+<div class="row">
+    <div class="col text-right mb-4">
+        <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0" data-toggle="modal"
+            data-target="#experienceModal" id="newExperienceModal">
+            <span class="icon text-white-50">
+                <i class="fas fa-user-plus"></i>
+            </span>
+            <span class="text">Nova Experiência</span>
+        </a>
+    </div>
+</div>
+
+@include('modals.form-experience-modal')
 @endsection
