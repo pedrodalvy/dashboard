@@ -48,14 +48,14 @@
 
                     <div class="row mt-2 mr-md-2 mb-3 d-flex flex-row-reverse">
 
-                        <button class="btn btn-sm btn-danger btn-icon-split ml-2" id="removeExperience">
+                        <button class="btn btn-sm btn-danger btn-icon-split ml-2">
                             <span class="icon text-white-50">
                                 <i class="fas fa-trash"></i>
                             </span>
                             <span class="text">Excluir</span>
                         </button>
 
-                        <button class="btn btn-sm btn-primary btn-icon-split ml-2" id="editExperience">
+                        <button class="btn btn-sm btn-primary btn-icon-split ml-2" onclick="openEditModal({{ $experience->id }})">
                             <span class="icon text-white-50">
                                 <i class="fas fa-pencil-alt"></i>
                             </span>

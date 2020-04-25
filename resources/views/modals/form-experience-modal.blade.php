@@ -84,12 +84,6 @@
 @section('script')
 <script>
 
-$('#editExperience').click(function () {
-    getExperienceById(1);
-    $('.loading').show();
-    
-})
-
 $('#date_out_chek').click(function (){
     if ($('#date_out_chek').is(':checked')) {
         $('#date_out').val('');
@@ -98,6 +92,11 @@ $('#date_out_chek').click(function (){
         $('#date_out').prop('disabled', false);
     }
 })
+
+let openEditModal = function (id) {
+    getExperienceById(id);
+    $('.loading').show();
+}
 
 
 let getExperienceById = function (id) {
