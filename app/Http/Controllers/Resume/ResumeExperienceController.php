@@ -106,6 +106,10 @@ class ResumeExperienceController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            return $this->resumeExperience->removeExperience($id);
+        } catch (Exception $ex) {
+            return json_encode(['type' => 'error', 'message' => 'Não foi possível executar a operação.']);
+        }
     }
 }

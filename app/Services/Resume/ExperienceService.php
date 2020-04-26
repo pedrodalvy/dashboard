@@ -56,6 +56,16 @@ class ExperienceService
 
     }
 
+    public function removeExperience($id) {
+        $exeperience = ResumeExperience::find($id);
+
+        if($exeperience->delete()) {
+            return json_encode(['type' => 'success', 'message' => 'Experiência removida com sucesso.']); 
+        }
+
+        return json_encode(['type' => 'error', 'message' => 'Não foi possível executar a operação.']);
+    }
+
     public function validateExperience(Request $request)
     {
         $rules = [
