@@ -98,6 +98,8 @@
     $('#send').click(function () {
         if ($('#id').val()) {
             updateExperience($('#id').val());
+        } else {
+            createExperience();
         }
     })
 
@@ -172,7 +174,7 @@
             data: getFormVaules()
         }).done(function (data) {
             $('.loading').hide();
-            
+
             data = JSON.parse(data);
 
             if (data.id) {
@@ -180,6 +182,29 @@
                 showNotification('Cadastro alterado com sucesso.', 'success');
             } else {
                 showNotification('Houve um erro ao tentar atualizar o cadastro.', 'error');
+            }
+        });
+    }
+
+    let createExperience = function () {
+        $('#experienceModal').modal('hide');
+        $.ajax({
+            url: '{{ route("experience.store") }}',
+            method: 'POST',
+            headers: {
+                'X-CSRF-Token': $('input[name="_token"]').attr('value')
+            },
+            data: getFormVaules()
+        }).done(function (data) {
+            $('.loading').hide();
+
+            data = JSON.parse(data);
+
+            if (data.id) {
+                addExperienceView(data);
+                showNotification('Cadastro criado com sucesso.', 'success');
+            } else {
+                showNotification('Houve um erro ao tentar fazer o cadastro.', 'error');
             }
         });
     }
@@ -221,6 +246,64 @@
     showNotification.on('click', function () {
         showNotification.close();
     });
+
+
+    let addExperienceView = function (data) {
+        let html = `
+        <div class="card shadow mb-1" id="experience_id_${ data.id }">
+            <!-- Card Header - Accordion -->
+            <a href="#collapse${ data.id }" class="d-block card-header py-3" data-toggle="collapse"
+                role="button" aria-expanded="false"
+                aria-controls="collapse${ data.id }">
+
+                <span class="font-weight-bold">Função: </span> 
+                <span id="job_title_${ data.id }">${ data.job_title }</span>
+
+            </a>
+            <!-- Card Content - Collapse -->
+            <div class="collapse" id="collapse${ data.id }"
+                style="">
+                <div class="card-body pb-0">
+                    <div class="row">
+                        <div class="col-md-8 mb-2">
+                            <span class="font-weight-bold">Empresa: </span>
+                            <span id="company_${ data.id }">${ data.company }</span>
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <span class="font-weight-bold">Entrada: </span>
+                            <span id="date_in_${ data.id }"> ${ experienceDateFormat(data.date_in) } </span>
+                        </div>
+                        <div class="col-md-2 mb-2">
+                            <span class="font-weight-bold">Saída: </span>
+                            <span id="date_out_${ data.id }">${ experienceDateFormat(data.date_out) }</span>
+                        </div>
+                    </div>
+                    <span class="font-weight-bold">Descrição da Função: </span>
+                    <span id="job_resume_${ data.id }">${ data.job_resume }</span>
+
+                    <div class="row mt-2 mr-md-2 mb-3 d-flex flex-row-reverse">
+
+                        <button class="btn btn-sm btn-danger btn-icon-split ml-2">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-trash"></i>
+                            </span>
+                            <span class="text">Excluir</span>
+                        </button>
+
+                        <button class="btn btn-sm btn-primary btn-icon-split ml-2"
+                            onclick="openEditModal(${ data.id })">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-pencil-alt"></i>
+                            </span>
+                            <span class="text">Editar</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>`;
+
+        $('#experienceCardBody').append(html);
+    };
 
 </script>
 @endsection

@@ -34,8 +34,26 @@ class ExperienceService
         if ($exeperience->save()) {
             return $exeperience->toJson();
         }
-        
+
         return json_encode(['error' => 'Não foi possível executar a operação.']);
+    }
+
+    public function createExperience(Request $request)
+    {
+        $exeperience = new ResumeExperience();
+
+        $exeperience->job_title = $request->job_title;
+        $exeperience->company = $request->company;
+        $exeperience->job_resume = $request->job_resume;
+        $exeperience->date_in = $request->date_in;
+        $exeperience->date_out = $request->date_out;
+
+        if ($exeperience->save()) {
+            return $exeperience->toJson();
+        }
+
+        return json_encode(['error' => 'Não foi possível executar a operação.']);
+
     }
 
     public function validateExperience(Request $request)

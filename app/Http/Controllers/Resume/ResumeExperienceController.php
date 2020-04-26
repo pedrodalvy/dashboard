@@ -48,8 +48,12 @@ class ResumeExperienceController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {
-        //
+    {   
+        try {
+            return $this->resumeExperience->createExperience($request);
+        } catch (Exception $ex) {
+            return json_encode(['error' => 'Não foi possível executar a operação.']);
+        }
     }
 
     /**

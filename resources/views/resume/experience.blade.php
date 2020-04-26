@@ -14,10 +14,10 @@
     </div>
 
 
-    <div class="card-body col-12">
+    <div class="card-body col-12" id="experienceCardBody">
         @forelse($experiences as $experience)
 
-        <div class="card shadow mb-1">
+        <div class="card shadow mb-1" id="experience_id_{{ $experience->id }}">
             <!-- Card Header - Accordion -->
             <a href="#collapse{{ $experience->id }}" class="d-block card-header py-3" data-toggle="collapse"
                 role="button" aria-expanded="{{ $loop->iteration  == 1 ? 'true' : 'false' }}"
