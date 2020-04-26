@@ -23,7 +23,8 @@
                 role="button" aria-expanded="{{ $loop->iteration  == 1 ? 'true' : 'false' }}"
                 aria-controls="collapse{{ $experience->id }}">
 
-                <span class="font-weight-bold">Função: </span> {{ $experience->job_title }}
+                <span class="font-weight-bold">Função: </span> 
+                <span id="job_title_{{ $experience->id }}">{{ $experience->job_title }}</span>
 
             </a>
             <!-- Card Content - Collapse -->
@@ -32,19 +33,20 @@
                 <div class="card-body pb-0">
                     <div class="row">
                         <div class="col-md-8 mb-2">
-                            <span class="font-weight-bold">Empresa: </span> {{ $experience->company }}
+                            <span class="font-weight-bold">Empresa: </span>
+                            <span id="company_{{ $experience->id }}">{{ $experience->company }}</span>
                         </div>
                         <div class="col-md-2 mb-2">
                             <span class="font-weight-bold">Entrada: </span>
-                            {{ date('m/Y', strtotime($experience->date_in)) }}
+                            <span id="date_in_{{ $experience->id }}">{{ date('m/Y', strtotime($experience->date_in)) }}</span>
                         </div>
                         <div class="col-md-2 mb-2">
                             <span class="font-weight-bold">Saída: </span>
-                            {{ date('m/Y', strtotime($experience->date_out))  }}
+                            <span id="date_out_{{ $experience->id }}">{{ date('m/Y', strtotime($experience->date_out)) }}</span>
                         </div>
                     </div>
                     <span class="font-weight-bold">Descrição da Função: </span>
-                    {{ $experience->job_resume }}
+                    <span id="job_resume_{{ $experience->id }}">{{ $experience->job_resume }}</span>
 
                     <div class="row mt-2 mr-md-2 mb-3 d-flex flex-row-reverse">
 
@@ -81,7 +83,7 @@
 <div class="row">
     <div class="col text-right mb-4">
         <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0" data-toggle="modal"
-            data-target="#experienceModal" id="newExperienceModal">
+            data-target="#experienceModal" onclick="openNewExpModal()">
             <span class="icon text-white-50">
                 <i class="fas fa-user-plus"></i>
             </span>
@@ -91,4 +93,5 @@
 </div>
 
 @include('modals.form-experience-modal')
+
 @endsection

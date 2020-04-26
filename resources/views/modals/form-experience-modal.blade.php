@@ -14,6 +14,8 @@
             <div class="modal-body">
 
                 <form>
+                    @csrf
+                    <input type="hidden" name="id" id="id">
                     <div class="row">
                         <div class="col-12">
                             <div class="form-group">
@@ -75,7 +77,7 @@
 
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancelar</button>
-                <button class="btn btn-primary load">Gravar</button>
+                <button class="btn btn-primary load" id="send">Gravar</button>
             </div>
 
         </div>
@@ -93,11 +95,55 @@
         }
     })
 
+    $('#send').click(function () {
+        if ($('#id').val()) {
+            updateExperience($('#id').val());
+        }
+    })
+
     let openEditModal = function (id) {
         $('.loading').show();
+        updateTitleModal('Editar cadastro');
         getExperienceById(id);
     }
 
+    let openNewExpModal = function () {
+        updateTitleModal('Novo Cadastro');
+        clearInputsModal();
+    }
+
+    let updateTitleModal = function (title) {
+        $('#titleModal').text(title);
+
+    }
+
+    let fillInputsModal = function (data) {
+        $('#id').val(data.id);
+        $('#job_title').val(data.job_title);
+        $('#company').val(data.company);
+        $('#job_resume').val(data.job_resume);
+        $('#date_in').val(data.date_in);
+        $('#date_out').val(data.date_out);
+    }
+
+    let clearInputsModal = function () {
+        $('#id').val('');
+        $('#job_title').val('');
+        $('#company').val('');
+        $('#job_resume').val('');
+        $('#date_in').val('');
+        $('#date_out').val('');
+    }
+
+    let getFormVaules = function () {
+        return {
+            job_title: $('#job_title').val(),
+            company: $('#company').val(),
+            job_resume: $('#job_resume').val(),
+            date_in: $('#date_in').val(),
+            date_out: $('#date_out').val(),
+        }
+    }
 
     let getExperienceById = function (id) {
         return $.get(
@@ -114,25 +160,67 @@
         });
     }
 
-    let fillInputsModal = function (data) {
-        $('#job_title').val(data.job_title);
-        $('#company').val(data.company);
-        $('#job_resume').val(data.job_resume);
-        $('#date_in').val(data.date_in);
-        $('#date_out').val(data.date_out);
+    let updateExperience = function (id) {
+        $('#experienceModal').modal('hide');
+        console.log('{{ route("experience.index") }}/' + id);
+        $.ajax({
+            url: '{{ route("experience.index") }}/' + id,
+            method: 'PUT',
+            headers: {
+                'X-CSRF-Token': $('input[name="_token"]').attr('value')
+            },
+            data: getFormVaules()
+        }).done(function (data) {
+            $('.loading').hide();
+            
+            data = JSON.parse(data);
+
+            if (data.id) {
+                updateExperienceView(data);
+                showNotification('Cadastro alterado com sucesso.', 'success');
+            } else {
+                showNotification('Houve um erro ao tentar atualizar o cadastro.', 'error');
+            }
+        });
     }
 
-    $('#newExperienceModal').click(function () {
-        clearInputsModal();
+    let updateExperienceView = function (data) {
+        let id = data.id;
+
+        $('#job_title_' + id).text(data.job_title);
+        $('#company_' + id).text(data.company);
+        $('#job_resume_' + id).text(data.job_resume);
+        $('#date_in_' + id).text(experienceDateFormat(data.date_in));
+        $('#date_out_' + id).text(experienceDateFormat(data.date_out));
+    }
+
+    let experienceDateFormat = function (date) {
+        let formatted_date = new Date(date);
+        console.log(formatted_date);
+        console.log(date);
+        return formatted_date.getMonth() + '/' + formatted_date.getFullYear();
+    }
+
+
+    let showNotification = function (message, type) {
+        PNotify.alert({
+            text: message,
+            type: type,
+            textTrusted: true,
+            modules: {
+                Buttons: {
+                    closer: false,
+                    sticker: false
+                }
+            },
+            width: screenWidth,
+            stack: window.stackTopCenter
+        })
+    }
+
+    showNotification.on('click', function () {
+        showNotification.close();
     });
-
-    let clearInputsModal = function () {
-        $('#job_title').val('');
-        $('#company').val('');
-        $('#job_resume').val('');
-        $('#date_in').val('');
-        $('#date_out').val('');
-    }
 
 </script>
 @endsection

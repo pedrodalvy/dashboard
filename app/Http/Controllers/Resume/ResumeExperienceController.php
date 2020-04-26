@@ -87,7 +87,11 @@ class ResumeExperienceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        try {
+            return $this->resumeExperience->updateExperience($request, $id);
+        } catch (Exception $ex) {
+            return json_encode(['error' => 'Não foi possível executar a operação.']);
+        }
     }
 
     /**

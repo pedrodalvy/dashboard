@@ -11,12 +11,13 @@
 
     <title>Admin - Dashboard</title>
 
-    <!-- Custom fonts for this template-->
-    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
-    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
-          rel="stylesheet">
 
-    <!-- Custom styles for this template-->
+    <link href="{{ asset('vendor/fontawesome-free/css/all.min.css') }}" rel="stylesheet" type="text/css">
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+    <link href="{{ asset('pnotify/PNotify.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('pnotify/PNotifyBootstrap4.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     <link rel="shortcut icon" href="{{ asset('img/favicon_2.png') }}" />
@@ -25,48 +26,53 @@
 <body id="page-top">
 
 
-<!-- Page Wrapper -->
-<div id="wrapper">
+    <!-- Page Wrapper -->
+    <div id="wrapper">
 
-    @yield('wrapper')
+        @yield('wrapper')
 
-</div>
-<!-- End of Page Wrapper -->
-
-
-<!-- Scroll to Top Button-->
-<a class="scroll-to-top rounded" href="#page-top">
-    <i class="fas fa-angle-up"></i>
-</a>
+    </div>
+    <!-- End of Page Wrapper -->
 
 
-<!-- Bootstrap core JavaScript-->
-<script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
-<script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+    <!-- Scroll to Top Button-->
+    <a class="scroll-to-top rounded" href="#page-top">
+        <i class="fas fa-angle-up"></i>
+    </a>
 
-<!-- Core plugin JavaScript-->
-<script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-<!-- jQuery Validation-->
-<script src="{{ asset('vendor/jquery-validation/jquery.validate.min.js') }}"></script>
-<script src="{{ asset('vendor/jquery-validation/localization/messages_pt_BR.js') }}"></script>
-<script src="{{ asset('js/validate.js') }}"></script>
+    <!-- Bootstrap core JavaScript-->
+    <script src="{{ asset('vendor/jquery/jquery.min.js') }}"></script>
+    <script src="{{ asset('vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
-<!-- Jquery Mask -->
-<script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
-<script src="{{ asset('js/mask.js') }}"></script>
+    <!-- Core plugin JavaScript-->
+    <script src="{{ asset('vendor/jquery-easing/jquery.easing.min.js') }}"></script>
 
-<!-- Custom scripts for all pages-->
-<script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    <!-- jQuery Validation-->
+    <script src="{{ asset('vendor/jquery-validation/jquery.validate.min.js') }}"></script>
+    <script src="{{ asset('vendor/jquery-validation/localization/messages_pt_BR.js') }}"></script>
+    <script src="{{ asset('js/validate.js') }}"></script>
 
-@include('admin.layouts.loading')
+    <!-- Jquery Mask -->
+    <script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
+    <script src="{{ asset('js/mask.js') }}"></script>
 
-@hasSection ('script')
+    <!-- PNotify -->
+    <script type="text/javascript" src="{{ asset('pnotify/PNotify.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('pnotify/PNotifyBootstrap4.js') }}"></script>
+
+
+    <!-- Custom scripts for all pages-->
+    <script src="{{ asset('js/sb-admin-2.min.js') }}"></script>
+    <script src="{{ asset('js/admin.js') }}"></script>
+
+    @include('admin.layouts.loading')
+
+    @include('admin.layouts.alert')
+
+    @hasSection ('script')
     @yield('script')
-@endif
-
-@include('admin.layouts.alert')
-
+    @endif
 
 </body>
 
