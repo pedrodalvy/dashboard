@@ -2,11 +2,16 @@
 
 namespace App\Services\Resume;
 
-use Illuminate\Http\Request;
 use App\Models\Resume\ResumeExperience;
+use Illuminate\Http\Request;
 
 class ExperienceService
 {
+    /**
+     * showExperiences
+     *
+     * @return void
+     */
     public function showExperiences()
     {
         $experiences = ResumeExperience::all();
@@ -15,6 +20,12 @@ class ExperienceService
             ->with('experiences', $experiences);
     }
 
+    /**
+     * editExperience
+     *
+     * @param  mixed $id
+     * @return void
+     */
     public function editExperience($id)
     {
         $experience = ResumeExperience::findOrFail($id);
@@ -25,6 +36,13 @@ class ExperienceService
         return $experience->toJson();
     }
 
+    /**
+     * updateExperience
+     *
+     * @param  mixed $request
+     * @param  mixed $id
+     * @return void
+     */
     public function updateExperience(Request $request, $id)
     {
         $experience = ResumeExperience::findOrFail($id);
@@ -43,6 +61,12 @@ class ExperienceService
         return json_encode(['error' => 'Não foi possível executar a operação.']);
     }
 
+    /**
+     * createExperience
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function createExperience(Request $request)
     {
         $experience = new ResumeExperience();
@@ -61,16 +85,29 @@ class ExperienceService
 
     }
 
-    public function removeExperience($id) {
+    /**
+     * removeExperience
+     *
+     * @param  mixed $id
+     * @return void
+     */
+    public function removeExperience($id)
+    {
         $experience = ResumeExperience::find($id);
 
-        if($experience->delete()) {
-            return json_encode(['type' => 'success', 'message' => 'Experiência removida com sucesso.']); 
+        if ($experience->delete()) {
+            return json_encode(['type' => 'success', 'message' => 'Experiência removida com sucesso.']);
         }
 
         return json_encode(['type' => 'error', 'message' => 'Não foi possível executar a operação.']);
     }
 
+    /**
+     * validateExperience
+     *
+     * @param  mixed $request
+     * @return void
+     */
     public function validateExperience(Request $request)
     {
         $rules = [
@@ -78,7 +115,7 @@ class ExperienceService
             'company' => 'required|string',
             'job_resume' => 'required|string',
             'date_in' => 'required|date',
-            'date_out' => 'date'
+            'date_out' => 'date',
         ];
         $messages = [
             'job_title.required' => 'É necessário informar a função.',
