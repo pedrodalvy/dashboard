@@ -18,6 +18,9 @@
         rel="stylesheet">
     <link href="{{ asset('pnotify/PNotify.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ asset('pnotify/PNotifyBootstrap4.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('vendor/gijgo/css/gijgo.min.css') }}" rel="stylesheet" type="text/css" />
+
     <link href="{{ asset('css/sb-admin-2.min.css') }}" rel="stylesheet">
 
     <link rel="shortcut icon" href="{{ asset('img/favicon_2.png') }}" />
@@ -56,6 +59,12 @@
     <!-- Jquery Mask -->
     <script src="{{ asset('vendor/jquery-mask/jquery.mask.min.js') }}"></script>
     <script src="{{ asset('js/mask.js') }}"></script>
+
+    <!-- Date Plugins -->
+    <script src="{{ asset('vendor/moment/moment.min.js') }}"></script>
+    <script src="{{ asset('vendor/gijgo/js/gijgo.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('vendor/gijgo/js/messages/messages.pt-br.js') }}" type="text/javascript"></script>
+    
 
     <!-- PNotify -->
     <script type="text/javascript" src="{{ asset('pnotify/PNotify.js') }}"></script>

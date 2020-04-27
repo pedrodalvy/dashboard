@@ -76,7 +76,7 @@ class ResumeExperienceController extends Controller
     public function edit($id)
     {
         try {
-            return $this->resumeExperience->editExeperience($id);
+            return $this->resumeExperience->editExperience($id);
         } catch (Exception $ex) {
             return back()->with('error', 'Não foi possível executar a operação.');
         }

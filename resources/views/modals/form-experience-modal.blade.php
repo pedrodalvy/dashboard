@@ -41,15 +41,15 @@
                         <div class="col-6 col-md-4">
                             <div class="form-group">
                                 <label for="date_in">Data de entrada</label>
-                                <input type="text" class="form-control form-control-sm mb-0" id="date_in" name="date_in"
-                                    placeholder="00/0000">
+                                <input type="text" class="form-control form-control-sm mb-0 " id="date_in" 
+                                    name="date_in">
                             </div>
                         </div>
                         <div class="col-6 col-md-4">
                             <div class="form-group">
                                 <label for="date_out">Data de Saída</label>
-                                <input type="text" class="form-control form-control-sm mb-0" id="date_out"
-                                    name="date_out" placeholder="00/0000">
+                                <input type="text" class="form-control form-control-sm mb-0 " id="date_out"
+                                    name="date_out">
                             </div>
                         </div>
                         <div class="col-md-4 d-flex align-items-center pt-md-3">
@@ -70,9 +70,6 @@
                         </div>
                     </div>
                 </form>
-
-
-
             </div>
 
             <div class="modal-footer">

@@ -10,29 +10,34 @@ class ExperienceService
     public function showExperiences()
     {
         $experiences = ResumeExperience::all();
+
         return view('resume.experience')
             ->with('experiences', $experiences);
     }
 
-    public function editExeperience($id)
+    public function editExperience($id)
     {
-        $exeperience = ResumeExperience::findOrFail($id);
+        $experience = ResumeExperience::findOrFail($id);
 
-        return $exeperience->toJson();
+        $experience->date_in = formatDateBr($experience->date_in);
+        $experience->date_out = formatDateBr($experience->date_out);
+
+        return $experience->toJson();
     }
 
     public function updateExperience(Request $request, $id)
     {
-        $exeperience = ResumeExperience::findOrFail($id);
+        $experience = ResumeExperience::findOrFail($id);
 
-        $exeperience->job_title = $request->job_title;
-        $exeperience->company = $request->company;
-        $exeperience->job_resume = $request->job_resume;
-        $exeperience->date_in = $request->date_in;
-        $exeperience->date_out = $request->date_out;
+        $experience->job_title = $request->job_title;
+        $experience->company = $request->company;
+        $experience->job_resume = $request->job_resume;
 
-        if ($exeperience->save()) {
-            return $exeperience->toJson();
+        $experience->date_in = unshapedDate($request->date_in);
+        $experience->date_out = unshapedDate($request->date_out);
+
+        if ($experience->save()) {
+            return $experience->toJson();
         }
 
         return json_encode(['error' => 'Não foi possível executar a operação.']);
@@ -40,16 +45,16 @@ class ExperienceService
 
     public function createExperience(Request $request)
     {
-        $exeperience = new ResumeExperience();
+        $experience = new ResumeExperience();
 
-        $exeperience->job_title = $request->job_title;
-        $exeperience->company = $request->company;
-        $exeperience->job_resume = $request->job_resume;
-        $exeperience->date_in = $request->date_in;
-        $exeperience->date_out = $request->date_out;
+        $experience->job_title = $request->job_title;
+        $experience->company = $request->company;
+        $experience->job_resume = $request->job_resume;
+        $experience->date_in = $request->date_in;
+        $experience->date_out = $request->date_out;
 
-        if ($exeperience->save()) {
-            return $exeperience->toJson();
+        if ($experience->save()) {
+            return $experience->toJson();
         }
 
         return json_encode(['error' => 'Não foi possível executar a operação.']);
@@ -57,9 +62,9 @@ class ExperienceService
     }
 
     public function removeExperience($id) {
-        $exeperience = ResumeExperience::find($id);
+        $experience = ResumeExperience::find($id);
 
-        if($exeperience->delete()) {
+        if($experience->delete()) {
             return json_encode(['type' => 'success', 'message' => 'Experiência removida com sucesso.']); 
         }
 

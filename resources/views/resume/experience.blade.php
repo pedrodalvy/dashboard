@@ -23,7 +23,7 @@
                 role="button" aria-expanded="{{ $loop->iteration  == 1 ? 'true' : 'false' }}"
                 aria-controls="collapse{{ $experience->id }}">
 
-                <span class="font-weight-bold">Função: </span> 
+                <span class="font-weight-bold">Função: </span>
                 <span id="job_title_{{ $experience->id }}">{{ $experience->job_title }}</span>
 
             </a>
@@ -38,11 +38,13 @@
                         </div>
                         <div class="col-md-2 mb-2">
                             <span class="font-weight-bold">Entrada: </span>
-                            <span id="date_in_{{ $experience->id }}">{{ date('m/Y', strtotime($experience->date_in)) }}</span>
+                            <span
+                                id="date_in_{{ $experience->id }}">{{ date('m/Y', strtotime($experience->date_in)) }}</span>
                         </div>
                         <div class="col-md-2 mb-2">
                             <span class="font-weight-bold">Saída: </span>
-                            <span id="date_out_{{ $experience->id }}">{{ date('m/Y', strtotime($experience->date_out)) }}</span>
+                            <span
+                                id="date_out_{{ $experience->id }}">{{ date('m/Y', strtotime($experience->date_out)) }}</span>
                         </div>
                     </div>
                     <span class="font-weight-bold">Descrição da Função: </span>
@@ -83,8 +85,8 @@
 
 <div class="row">
     <div class="col text-right mb-4">
-        <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0" data-toggle="modal"
-            data-target="#experienceModal" onclick="openNewExpModal()">
+        <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0" data-toggle="modal" data-target="#experienceModal"
+            onclick="openNewExpModal()">
             <span class="icon text-white-50">
                 <i class="fas fa-user-plus"></i>
             </span>
@@ -178,7 +180,7 @@
 
     let updateExperience = function (id) {
         $('#experienceModal').modal('hide');
-        console.log('{{ route("experience.index") }}/' + id);
+
         $.ajax({
             url: '{{ route("experience.index") }}/' + id,
             method: 'PUT',
@@ -233,14 +235,11 @@
         $('#date_out_' + id).text(experienceDateFormat(data.date_out));
     }
 
+
     let experienceDateFormat = function (date) {
-        let formatted_date = new Date(date);
-        console.log(formatted_date);
-        console.log(date);
-        return formatted_date.getMonth() + '/' + formatted_date.getFullYear();
+
+        return moment(date).format('MM/YYYY');
     }
-
-
 
 
     let addExperienceView = function (data) {
@@ -333,7 +332,7 @@
             $('.loading').hide();
 
             data = JSON.parse(data);
-            console.log(data);
+
             if (data.type == 'success') {
                 $('#experience_id_' + id).remove();
                 showNotification(data.message, data.type);
@@ -362,5 +361,9 @@
     showNotification.on('click', function () {
         showNotification.close();
     });
+
+
+
+
 </script>
 @endsection
