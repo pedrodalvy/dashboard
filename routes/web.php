@@ -32,6 +32,8 @@ Route::prefix('admin')->group(function () {
     // Rotas para visualização e manutenção das experiencias
     Route::resource('experience', 'Resume\ResumeExperienceController');
 
+    // Rotas para visualização e manutenção da formação
+    Route::resource('education', 'Resume\ResumeEducationController');
 
     // Abre o formulário de login
     Route::get('login', 'Auth\AdminLoginController@index')
