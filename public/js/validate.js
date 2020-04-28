@@ -49,6 +49,25 @@ $(function () {
         }
     })
 
+    $('#formEducation').validate({
+        errorClass: "is-invalid",
+
+        highlight: function (element, errorClass) {
+            $(element).addClass(errorClass);
+            $(element).fadeOut(function () {
+                $(element).fadeIn();
+            });
+        },
+
+        rules: {
+            course: { required: true, minlength: 3 },
+            establishment: { required: true, minlength: 3 },
+            course_resume: { required: true, minlength: 10 },
+            date_in: { dateBR: true},
+            date_out: { dateBR: true},
+        }
+    })
+
     // Faz a validação do número do telefone
     jQuery.validator.addMethod("foneBR", function (value, element) {
         return this.optional(element) || /^(\(?\d{2}\)?\s)?(\d )?(\d{4}\-\d{4})$/.test(value);

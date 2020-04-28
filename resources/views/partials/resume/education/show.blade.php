@@ -16,7 +16,7 @@
 
     <div class="card-body col-12">
 
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-12 col-md-2 text-md-right">
                 <span class="font-weight-bold">Curso: </span>
             </div>
@@ -25,7 +25,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-12 col-md-2 text-md-right">
                 <span class="font-weight-bold">Instituição: </span>
             </div>
@@ -34,7 +34,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-12 col-md-2 text-md-right">
                 <span class="font-weight-bold">Inicio: </span>
             </div>
@@ -43,7 +43,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-12 col-md-2 text-md-right">
                 <span class="font-weight-bold">Fim: </span>
             </div>
@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="row">
+        <div class="row mb-2">
             <div class="col-12 col-md-2 text-md-right">
                 <span class="font-weight-bold">Descrição do Curso: </span>
             </div>
@@ -66,8 +66,7 @@
 
 <div class="row">
     <div class="col text-left mb-4">
-        <a href="{{ route('education.edit', $education->id)}}"
-            class="btn btn-primary btn-icon-split btn-sm m-0">
+        <a href="{{ route('education.edit', $education->id)}}" class="btn btn-primary btn-icon-split btn-sm m-0">
             <span class="icon text-white-50">
                 <i class="fas fa-pencil-alt"></i>
             </span>

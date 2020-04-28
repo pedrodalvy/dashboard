@@ -38,7 +38,11 @@ class ResumeEducationController extends Controller
      */
     public function create()
     {
-        //
+        try {
+            return $this->educationService->createEducation();
+        } catch (Exception $ex) {
+            return back()->with('error', 'Não foi possível realizar esta operação.');
+        } 
     }
 
     /**
@@ -75,7 +79,11 @@ class ResumeEducationController extends Controller
      */
     public function edit($id)
     {
-        //
+        try {
+            return $this->educationService->editEducationById($id);
+        } catch (Exception $ex) {
+            return back()->with('error', 'Não foi possível fazer a consulta.');
+        }
     }
 
     /**
@@ -87,7 +95,12 @@ class ResumeEducationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->educationService->validateEducation($request);
+        try {
+            return $this->educationService->updateEducation($request, $id);
+        } catch (Exception $ex) {
+            return back()->with('error', 'Não foi possível realizar esta operação.');
+        }
     }
 
     /**

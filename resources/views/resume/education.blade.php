@@ -35,10 +35,6 @@
                     <td>{{ formatDateBr($education->date_out) }}</td>
                     <td>
                         <div class="d-flex justify-content-around">
-                            <a href="{{ route('education.edit', $education->id)}}" title="Editar"
-                                class="btn  btn-circle btn-sm btn-primary">
-                                <i class="fas fa-pencil-alt"></i>
-                            </a>
                             <a href="{{ route('education.show', $education->id)}}" title="Visualizar"
                                 class="btn  btn-circle btn-sm btn-info">
                                 <i class="fas fa-file-alt"></i>
@@ -61,7 +57,7 @@
 
 <div class="row">
     <div class="col text-right mb-4">
-        <a href="#" class="btn btn-primary btn-icon-split btn-sm m-0" data-toggle="modal" data-target="#modal">
+        <a href="{{ route('education.create')}}" class="btn btn-primary btn-icon-split btn-sm m-0">
             <span class="icon text-white-50">
                 <i class="fas fa-plus"></i>
             </span>
