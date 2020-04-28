@@ -11,6 +11,14 @@ class EducationService
     {
         $educations = ResumeEducation::all();
 
-        return $educations;
+        return view('resume.education')
+            ->with('educations', $educations);
+    }
+
+    public function showEducationById($id) {
+        $education = ResumeEducation::findOrFail($id);
+
+        return view('partials.resume.education.show')
+            ->with('education', $education);
     }
 }

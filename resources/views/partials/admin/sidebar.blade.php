@@ -55,6 +55,7 @@
                 <h6 class="collapse-header">Manutenção do Currículo:</h6>
                 <a class="collapse-item load" href="{{ route('resume.profile') }}">Perfil</a>
                 <a class="collapse-item load" href="{{ route('experience.index') }}">Experiência</a>
+                <a class="collapse-item load" href="{{ route('education.index') }}">Formação</a>
             </div>
         </div>
     </li>

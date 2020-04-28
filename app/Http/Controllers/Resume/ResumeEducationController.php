@@ -25,9 +25,9 @@ class ResumeEducationController extends Controller
     public function index()
     {
         try {
-            return $this->educationService->showEducations()->toJson();
+            return $this->educationService->showEducations();
         } catch (Exception $ex) {
-            return back()->with('error', 'Não foi possível consultar as obrigações.');
+            return back()->with('error', 'Não foi possível fazer a consulta.');
         }
     }
 
@@ -60,7 +60,11 @@ class ResumeEducationController extends Controller
      */
     public function show($id)
     {
-        //
+        try {
+            return $this->educationService->showEducationById($id);
+        } catch (Exception $ex) {
+            return back()->with('error', 'Não foi possível fazer a consulta.');
+        }
     }
 
     /**

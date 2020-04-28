@@ -20,3 +20,18 @@ label.is-invalid {
     color: #e74a3b;
     margin-bottom: 0;
 }
+
+.table-resume-education .course {
+    width: 30%;
+}
+
+
+
+.table-resume-education .date_in,
+.table-resume-education .date_out {
+    width: 10%;
+}
+
+.table-resume-education .actions {
+    width: 13%;
+}
