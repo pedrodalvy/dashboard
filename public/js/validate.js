@@ -30,8 +30,32 @@ $(function () {
         }
     })
 
+
+    $('#experienceForm').validate({
+        errorClass: "is-invalid",
+
+        highlight: function (element, errorClass) {
+            $(element).addClass(errorClass);
+            $(element).fadeOut(function () {
+                $(element).fadeIn();
+            });
+        },
+
+        rules: {
+            job_title: { required: true, minlength: 3 },
+            company: { required: true, minlength: 3 },
+            job_resume: { required: true, minlength: 10 },
+            date_in: { dateBR: true},
+        }
+    })
+
     // Faz a validação do número do telefone
     jQuery.validator.addMethod("foneBR", function (value, element) {
         return this.optional(element) || /^(\(?\d{2}\)?\s)?(\d )?(\d{4}\-\d{4})$/.test(value);
     }, 'Digite um telefone válido');
+
+    // Faz a validação do número da data
+    jQuery.validator.addMethod("dateBR", function (value, element) {
+        return this.optional(element) || /^\d\d\/\d\d\/\d\d\d\d$/.test(value);
+    }, 'Informe uma data válida');
 });
