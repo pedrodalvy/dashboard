@@ -14,7 +14,7 @@
 
 
     <div class="card-body col-12">
-        <form action="{{ route('education.store') }}" method="POST" id="formEducation">
+        <form action="{{ route('education.store') }}" method="POST" id="formEducation" autocomplete="off">
             @csrf
             @include('partials.resume.education._form')
 

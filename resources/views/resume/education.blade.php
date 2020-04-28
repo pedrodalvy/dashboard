@@ -39,10 +39,14 @@
                                 class="btn  btn-circle btn-sm btn-info">
                                 <i class="fas fa-file-alt"></i>
                             </a>
-                            <button class="btn btn-circle btn-sm btn-danger" title="Remover">
+                            <button type="submit" class="btn btn-circle btn-sm btn-danger" title="Remover" form="remove_{{$education->id}}">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>
+                    <form action="{{ route('education.destroy', $education->id)}}" id="remove_{{$education->id}}" method="POST" hidden>
+                        @method('DELETE')
+                        @csrf
+                    </form>
                     </td>
                 </tr>
                 @empty

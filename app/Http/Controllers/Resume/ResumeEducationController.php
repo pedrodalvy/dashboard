@@ -3,9 +3,9 @@
 namespace App\Http\Controllers\Resume;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Services\Resume\EducationService;
 use Exception;
+use Illuminate\Http\Request;
 
 class ResumeEducationController extends Controller
 {
@@ -42,7 +42,7 @@ class ResumeEducationController extends Controller
             return $this->educationService->createEducation();
         } catch (Exception $ex) {
             return back()->with('error', 'Não foi possível realizar esta operação.');
-        } 
+        }
     }
 
     /**
@@ -53,7 +53,13 @@ class ResumeEducationController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->educationService->validateEducation($request);
+
+        try {
+            return $this->educationService->storeEducation($request);
+        } catch (Exception $ex) {
+            return back()->with('error', 'Não foi possível fazer a consulta.');
+        }
     }
 
     /**
@@ -111,6 +117,10 @@ class ResumeEducationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        try {
+            return $this->educationService->removeEducation($id);
+        } catch (Exception $ex) {
+            return back()->with('error', 'Não foi possível realizar esta operação.');
+        }
     }
 }

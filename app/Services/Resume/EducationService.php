@@ -15,14 +15,16 @@ class EducationService
             ->with('educations', $educations);
     }
 
-    public function showEducationById($id) {
+    public function showEducationById($id)
+    {
         $education = $this->findEducation($id);
 
         return view('partials.resume.education.show')
             ->with('education', $education);
     }
 
-    public function editEducationById($id) {
+    public function editEducationById($id)
+    {
         $education = $this->findEducation($id);
 
         return view('partials.resume.education.edit')
@@ -32,14 +34,14 @@ class EducationService
     public function updateEducation(Request $request, $id)
     {
         $education = $this->findEducation($id);
-        
+
         $education->course = $request->course;
         $education->establishment = $request->establishment;
         $education->course_resume = $request->course_resume;
         $education->date_in = unshapedDate($request->date_in);
         $education->date_out = unshapedDate($request->date_out);
 
-        if($education->save()) {
+        if ($education->save()) {
             return redirect(route('education.show', $id))
                 ->with('success', 'Cadastro alterado com sucesso.');
         }
@@ -54,6 +56,34 @@ class EducationService
             ->with('education', $education);
     }
 
+    public function storeEducation(Request $request)
+    {
+        $education = new ResumeEducation;
+
+        $education->course = $request->course;
+        $education->establishment = $request->establishment;
+        $education->course_resume = $request->course_resume;
+        $education->date_in = unshapedDate($request->date_in);
+        $education->date_out = unshapedDate($request->date_out);
+
+        if ($education->save()) {
+            return redirect(route('education.index'))
+                ->with('success', 'Cadstro realizado com sucesso.');
+        }
+
+        return back()->with('error', 'Não foi possível realizar esta operação.');
+    }
+
+    public function removeEducation($id)
+    {
+        $education = $this->findEducation($id);
+
+        if ($education->delete()) {
+            return back()->with('success', 'Curso removido com sucesso.');
+        }
+
+        return back()->with('error', 'Não foi possível realizar esta operação.');
+    }
 
     protected function findEducation($id)
     {
