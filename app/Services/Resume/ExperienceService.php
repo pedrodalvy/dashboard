@@ -31,7 +31,10 @@ class ExperienceService
         $experience = ResumeExperience::findOrFail($id);
 
         $experience->date_in = formatDateBr($experience->date_in);
-        $experience->date_out = formatDateBr($experience->date_out);
+
+        if ($this->isCurrentJob($experience->date_out)) {
+            $experience->date_out = formatDateBr($experience->date_out);
+        }
 
         return $experience->toJson();
     }
@@ -52,7 +55,12 @@ class ExperienceService
         $experience->job_resume = $request->job_resume;
 
         $experience->date_in = unshapedDate($request->date_in);
-        $experience->date_out = unshapedDate($request->date_out);
+
+        if ($this->isCurrentJob($request->date_out)) {
+            $experience->date_out = unshapedDate($request->date_out);
+        } else {
+            $experience->date_out = null;
+        }
 
         if ($experience->save()) {
             return $experience->toJson();
@@ -74,8 +82,11 @@ class ExperienceService
         $experience->job_title = $request->job_title;
         $experience->company = $request->company;
         $experience->job_resume = $request->job_resume;
-        $experience->date_in = $request->date_in;
-        $experience->date_out = $request->date_out;
+        $experience->date_in = unshapedDate($request->date_in);
+
+        if ($this->isCurrentJob($request->date_out)) {
+            $experience->date_out = unshapedDate($request->date_out);
+        }
 
         if ($experience->save()) {
             return $experience->toJson();
@@ -100,6 +111,17 @@ class ExperienceService
         }
 
         return json_encode(['type' => 'error', 'message' => 'Não foi possível executar a operação.']);
+    }
+
+    /**
+     * isCurrentJob
+     *
+     * @param  mixed $date_out
+     * @return void
+     */
+    protected function isCurrentJob($date_out)
+    {
+        return isset($date_out);
     }
 
     /**

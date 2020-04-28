@@ -22,7 +22,7 @@
 
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
 
-    <link rel="shortcut icon" href="{{ asset('img/favicon.png') }}" />
+    <link rel="shortcut icon" href="{{ asset('img/favicon_2.png') }}" />
 
 </head>
 

@@ -43,8 +43,9 @@
                         </div>
                         <div class="col-md-2 mb-2">
                             <span class="font-weight-bold">Saída: </span>
-                            <span
-                                id="date_out_{{ $experience->id }}">{{ date('m/Y', strtotime($experience->date_out)) }}</span>
+                            <span id="date_out_{{ $experience->id }}">
+                                {{ $experience->date_out ? date('m/Y', strtotime($experience->date_out)) : 'Trabalhando'}}
+                            </span>
                         </div>
                     </div>
                     <span class="font-weight-bold">Descrição da Função: </span>
@@ -141,7 +142,14 @@
         $('#company').val(data.company);
         $('#job_resume').val(data.job_resume);
         $('#date_in').val(data.date_in);
-        $('#date_out').val(data.date_out);
+
+        if (data.date_out) {
+            $('#date_out').val(data.date_out);
+        } else {
+            $('#date_out').val('');
+            $('#date_out').prop('disabled', true);
+            $('#date_out_chek').prop('checked', true);
+        }
     }
 
     let clearInputsModal = function () {
@@ -154,13 +162,18 @@
     }
 
     let getFormVaules = function () {
-        return {
+        let obj = {
             job_title: $('#job_title').val(),
             company: $('#company').val(),
             job_resume: $('#job_resume').val(),
             date_in: $('#date_in').val(),
-            date_out: $('#date_out').val(),
         }
+
+        if (!$('#date_out').prop('disabled')) {
+            obj.date_out = $('#date_out').val();
+        }
+
+        return obj;
     }
 
     let getExperienceById = function (id) {
@@ -232,7 +245,12 @@
         $('#company_' + id).text(data.company);
         $('#job_resume_' + id).text(data.job_resume);
         $('#date_in_' + id).text(experienceDateFormat(data.date_in));
-        $('#date_out_' + id).text(experienceDateFormat(data.date_out));
+        
+        if (data.date_out) {
+            $('#date_out_' + id).text(experienceDateFormat(data.date_out));
+        } else {
+            $('#date_out_' + id).text('Trabalhando');
+        }
     }
 
 
@@ -269,7 +287,9 @@
                         </div>
                         <div class="col-md-2 mb-2">
                             <span class="font-weight-bold">Saída: </span>
-                            <span id="date_out_${ data.id }">${ experienceDateFormat(data.date_out) }</span>
+                            <span id="date_out_${ data.id }">
+                                ${ data.date_out ? experienceDateFormat(data.date_out) : 'Trabalhando' }
+                            </span>
                         </div>
                     </div>
                     <span class="font-weight-bold">Descrição da Função: </span>
@@ -361,9 +381,6 @@
     showNotification.on('click', function () {
         showNotification.close();
     });
-
-
-
 
 </script>
 @endsection
