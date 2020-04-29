@@ -19,10 +19,15 @@ if ($(window).width() <= 600) {
 
 $(document).ready(function () {
     $('#date_in,#date_out').each(function () {
+        let inputSize = '';
+        if($(this).hasClass('form-control-sm')) {
+            inputSize = 'small';
+        }
+
         $(this).datepicker({
             uiLibrary: 'bootstrap4', 
             iconsLibrary: 'fontawesome',
-            size: 'small',
+            size: inputSize,
             format: 'dd/mm/yyyy',
             startDate: 'today',
             locale: 'pt-br',
