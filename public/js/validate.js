@@ -49,6 +49,24 @@ $(function () {
         }
     })
 
+    $('#userEditForm').validate({
+        errorClass: "is-invalid",
+
+        highlight: function (element, errorClass) {
+            $(element).addClass(errorClass);
+            $(element).fadeOut(function () {
+                $(element).fadeIn();
+            });
+        },
+
+        rules: {
+            name: { required: true, minlength: 3 },
+            email: { required: true, email: true },
+            password: { required: false, rangelength: [8, 16] },
+            password_confirm: { equalTo: '#password'},
+        }
+    })
+
     $('#formEducation').validate({
         errorClass: "is-invalid",
 

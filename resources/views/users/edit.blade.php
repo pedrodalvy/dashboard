@@ -10,18 +10,18 @@
 
 <div class="card border-left-primary  shadow mb-4">
     <div class="card-header py-3">
-        <h6 class="m-0 font-weight-bold text-primary">Cadastro</h6>
+        <h6 class="m-0 font-weight-bold text-primary">Editar cadastro</h6>
     </div>
 
     <div class="card-body">
-        <form action="{{ route('user.update', $user->id)}}" method="post">
+        <form action="{{ route('user.update', $user->id)}}" method="post" id="userEditForm">
             @csrf
             <div class="row mb-2">
                 <div class="col-12 col-md-2 text-md-right align-middle">
                     <span class="font-weight-bold">Nome: </span>
                 </div>
                 <div class="col-12 col-md-10">
-                    <input type="text" class="form-control" value="{{ $user->name }}" name="name" />
+                    <input type="text" class="form-control" value="{{ $user->name }}" name="name" id="name"/>
                 </div>
             </div>
 
@@ -30,7 +30,7 @@
                     <span class="font-weight-bold">E-Mail: </span>
                 </div>
                 <div class="col-12 col-md-10">
-                    <input type="text" class="form-control" value="{{ $user->email }}" name="email" />
+                    <input type="text" class="form-control" value="{{ $user->email }}" name="email" id="email"/>
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
                     <span class="font-weight-bold">Senha: </span>
                 </div>
                 <div class="col-12 col-md-10">
-                    <input type="password" class="form-control" name="password" />
+                    <input type="password" class="form-control" name="password" id="password"/>
                 </div>
             </div>
 
@@ -48,7 +48,7 @@
                     <span class="font-weight-bold">Repita a senha: </span>
                 </div>
                 <div class="col-12 col-md-10">
-                    <input type="password" class="form-control" name="password_confirm" />
+                    <input type="password" class="form-control" name="password_confirm" id="password_confirm"/>
                 </div>
             </div>
 
