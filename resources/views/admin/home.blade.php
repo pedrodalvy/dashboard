@@ -9,7 +9,6 @@
 <!-- Content Row -->
 <div class="row">
 
-    <!-- Earnings (Monthly) Card Example -->
     <div class="col-xl-4 col-md-6 mb-4">
         <div class="card border-left-info shadow h-100 py-2">
             <div class="card-body">
@@ -31,7 +30,7 @@
                         </div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
+                        <i class="fas fa-id-badge fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -50,7 +49,7 @@
                         <div class="h5 mb-0 font-weight-bold text-gray-800">3</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
+                        <i class="fas fa-briefcase fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
@@ -69,7 +68,7 @@
                         <div class="h5 mb-0 font-weight-bold text-gray-800">1</div>
                     </div>
                     <div class="col-auto">
-                        <i class="fas fa-calendar fa-2x text-gray-300"></i>
+                        <i class="fas fa-graduation-cap fa-2x text-gray-300"></i>
                     </div>
                 </div>
             </div>
