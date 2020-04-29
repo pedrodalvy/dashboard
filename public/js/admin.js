@@ -26,7 +26,8 @@ $(document).ready(function () {
             format: 'dd/mm/yyyy',
             startDate: 'today',
             locale: 'pt-br',
-            autoclose: true
+            autoclose: true,
+            showRightIcon: false,
         });
     })
    
