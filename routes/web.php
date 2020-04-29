@@ -28,9 +28,6 @@ Route::prefix('admin')->group(function () {
 
         // Rotas para visualização e manutenção da formação
         Route::resource('education', 'Resume\ResumeEducationController');
-
-        // Rotas para visualização e manutenção das habilidades
-        Route::resource('skill', 'Resume\ResumeSkillController');
     });
 
 

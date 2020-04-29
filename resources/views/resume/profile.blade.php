@@ -91,7 +91,13 @@
 @endsection
 
 @section('script')
+<link rel="stylesheet" href="{{ asset('vendor/bootstrap-tagsinput/tagsinput.css') }}">
+<script src="{{ asset('vendor/bootstrap-tagsinput/tagsinput.js') }}"></script>
 <script>
+    $('#skills').tagsinput({
+        trimValue: true
+    });
+
     // Add the following code if you want the name of the file appear on select
     $("#resume").on("change", function () {
         var fileName = $(this).val().split("\\").pop();

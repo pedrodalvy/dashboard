@@ -35,7 +35,7 @@ class ResumeProfile extends Authenticatable
     protected $guard = 'admin';
 
     protected $fillable = [
-        'name', 'description', 'resume',
+        'name', 'description', 'resume', 'skills',
     ];
 
 }

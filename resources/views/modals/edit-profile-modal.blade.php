@@ -98,6 +98,17 @@
                             </div>
                         </div>
                     </div>
+
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="form-group mb-3">
+                                <label for="skills">Skills</label>
+                                <input class="form-control"  type="text" name="skills" id="skills" data-role="tagsinput"
+                                    value="{{ $data->skills }}">
+                            </div>
+                        </div>
+                    </div>
+
                 </form>
 
             </div>

@@ -35,6 +35,7 @@ class ResumeProfileService
         $profile->linkedin = $request->linkedin;
         $profile->github = $request->github;
         $profile->site = $request->site;
+        $profile->skills = $request->skills;
 
         if ($request->hasFile('resume')) {
             $profile->resume = $this->saveFile($request);
@@ -70,6 +71,7 @@ class ResumeProfileService
             'linkedin' => 'nullable|url',
             'github' => 'nullable|url',
             'site' => 'nullable|url',
+            'skills' => 'string',
         ];
         $messages = [
             'name.required' => 'O nome precisa ser informado',
@@ -99,6 +101,8 @@ class ResumeProfileService
             'linkedin.url' => 'O endereço do Linkedin está inválido',
             'github.url' => 'O endereço do Github está inválido',
             'site.url' => 'O endereço do site está inválido',
+
+            'skills.string' => 'Informe uma skill válida.'
         ];
 
         return $request->validate($rules, $messages);
