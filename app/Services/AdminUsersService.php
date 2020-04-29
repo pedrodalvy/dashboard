@@ -6,7 +6,15 @@ use App\Admin;
 
 class AdminUsersService
 {
-    static function getAllUsers() {
+    public function getAllUsers() {
         return Admin::all();
+    }
+
+    public function showUser($id)
+    {
+        $user = Admin::findOrFail($id);
+
+        return view('users.show')
+            ->with('user', $user);
     }
 }

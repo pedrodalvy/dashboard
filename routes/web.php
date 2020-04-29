@@ -24,8 +24,12 @@ Route::prefix('admin')->group(function () {
     Route::get('/', 'Admin\AdminController@index')
         ->name('admin.home');
 
-    Route::get('users', 'User\UserController@index')
-        ->name('admin.users');
+    Route::prefix('user')->group(function () {
+        Route::get('show/{id}', 'User\UserController@show')
+            ->name('user.show');
+    });
+
+    
 
         
     // Rotas para manutenção do currículo
