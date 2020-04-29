@@ -68,6 +68,11 @@
                 </tr>
 
                 <tr>
+                    <th scope="row" class="text-right">Skills</th>
+                    <td>{{ str_replace(',', ', ', $data->skills) ?? 'Não informado' }}</td>
+                </tr>
+
+                <tr>
                     <th scope="row" class="text-right">Currículo</th>
                     <td>Criar botão de download</td>
                 </tr>

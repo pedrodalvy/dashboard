@@ -71,7 +71,7 @@ class ResumeProfileService
             'linkedin' => 'nullable|url',
             'github' => 'nullable|url',
             'site' => 'nullable|url',
-            'skills' => 'string',
+            'skills' => 'string|nullable',
         ];
         $messages = [
             'name.required' => 'O nome precisa ser informado',

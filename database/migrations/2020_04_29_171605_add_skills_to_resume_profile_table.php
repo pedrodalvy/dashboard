@@ -14,7 +14,7 @@ class AddSkillsToResumeProfileTable extends Migration
     public function up()
     {
         Schema::table('resume_profile', function (Blueprint $table) {
-            $table->string('skills');
+            $table->string('skills')->nullable();
         });
     }
 
