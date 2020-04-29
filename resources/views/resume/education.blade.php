@@ -36,10 +36,10 @@
                     <td>
                         <div class="d-flex justify-content-around">
                             <a href="{{ route('education.show', $education->id)}}" title="Visualizar"
-                                class="btn  btn-circle btn-sm btn-info">
+                                class="btn  btn-circle btn-sm btn-info load">
                                 <i class="fas fa-file-alt"></i>
                             </a>
-                            <button type="submit" class="btn btn-circle btn-sm btn-danger" title="Remover" form="remove_{{$education->id}}">
+                            <button type="submit" class="btn btn-circle btn-sm btn-danger load" title="Remover" form="remove_{{$education->id}}">
                                 <i class="fas fa-trash"></i>
                             </button>
                         </div>

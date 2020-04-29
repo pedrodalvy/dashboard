@@ -39,7 +39,7 @@
             </tbody>
         </table>
         <div class="col mb-0 mt-3 ml-0 p-0">
-            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-icon-split btn-sm m-0">
+            <a href="{{ route('user.edit', $user->id) }}" class="btn btn-primary btn-icon-split btn-sm m-0 load">
                 <span class="icon text-white-50">
                     <i class="fas fa-pen"></i>
                 </span>

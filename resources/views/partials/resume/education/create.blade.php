@@ -20,7 +20,7 @@
 
             <div class="row">
                 <div class="col text-right ">
-                    <a href="{{ route('education.index') }}" class="btn btn-danger" type="button">Cancelar</a>
+                    <a href="{{ route('education.index') }}" class="btn btn-danger load" type="button">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Gravar</button>
                 </div>
             </div>

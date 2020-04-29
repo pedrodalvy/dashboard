@@ -66,14 +66,14 @@
 
 <div class="row">
     <div class="col text-left mb-4">
-        <a href="{{ route('education.edit', $education->id)}}" class="btn btn-primary btn-icon-split btn-sm m-0">
+        <a href="{{ route('education.edit', $education->id)}}" class="btn btn-primary btn-icon-split btn-sm m-0 load">
             <span class="icon text-white-50">
                 <i class="fas fa-pencil-alt"></i>
             </span>
             <span class="text">Editar</span>
         </a>
 
-        <button class="btn btn-danger btn-icon-split btn-sm m-0">
+        <button class="btn btn-danger btn-icon-split btn-sm m-0 load">
             <span class="icon text-white-50">
                 <i class="fas fa-trash"></i>
             </span>
@@ -83,7 +83,7 @@
 
 
     <div class="col text-right mb-4">
-        <a href="{{ route('education.index') }}" class="btn btn-primary btn-icon-split btn-sm m-0">
+        <a href="{{ route('education.index') }}" class="btn btn-primary btn-icon-split btn-sm m-0 load">
             <span class="icon text-white-50">
                 <i class="fas fa-arrow-alt-circle-left"></i>
             </span>

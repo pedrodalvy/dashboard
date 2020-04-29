@@ -54,7 +54,7 @@
 
             <div class="row">
                 <div class="col text-right ">
-                    <a href="{{ route('user.show', $user->id) }}" class="btn btn-danger" type="button">Cancelar</a>
+                    <a href="{{ route('user.show', $user->id) }}" class="btn btn-danger load" type="button">Cancelar</a>
                     <button type="submit" class="btn btn-primary">Gravar</button>
                 </div>
             </div>
