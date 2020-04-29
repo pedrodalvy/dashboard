@@ -27,6 +27,12 @@ Route::prefix('admin')->group(function () {
     Route::prefix('user')->group(function () {
         Route::get('show/{id}', 'User\UserController@show')
             ->name('user.show');
+
+        Route::get('edit/{id}', 'User\UserController@edit')
+            ->name('user.edit');
+
+        Route::post('edit/{id}', 'User\UserController@update')
+            ->name('user.update');
     });
 
     
