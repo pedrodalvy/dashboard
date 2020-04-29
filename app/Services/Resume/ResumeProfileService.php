@@ -11,7 +11,7 @@ class ResumeProfileService
     {
         $resume = $this->getProfileData();
 
-        return view('admin.resume.profile')
+        return view('resume.profile')
             ->with('data', $resume->first());
     }
 
