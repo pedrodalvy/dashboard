@@ -73,8 +73,19 @@
                 </tr>
 
                 <tr>
-                    <th scope="row" class="text-right">Currículo</th>
-                    <td>Criar botão de download</td>
+                    <th scope="row" class="text-right align-middle">Currículo</th>
+                    <td>
+                        @if(!$data->resume == null)
+                        <a href="{{ route('resume.download') }}" class="btn btn-secondary btn-icon-split btn-sm m-0" target="blank">
+                            <span class="icon text-white-50">
+                                <i class="fas fa-file-download"></i>
+                            </span>
+                            <span class="text">Fazer Download</span>
+                        </a>
+                        @else
+                            <span class="align-middle">Nenhum arquivo adicionado</span>
+                        @endif
+                    </td>
                 </tr>
             </tbody>
         </table>

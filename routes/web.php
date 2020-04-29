@@ -3,8 +3,21 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return 'resume';
+    return redirect(route('resume.page'));
 })->name('resume');
+
+
+Route::prefix('resume')->group(function () {
+    Route::get('resume', function() {
+        return 'reserved for resume page';
+    })->name('resume.page');
+
+    // Retorna o link para download do currículo
+    Route::get('download', function () {
+       return redirect('uploads/' . 'currículo.pdf');
+    })->name('resume.download');
+});
+
 
 Route::prefix('admin')->group(function () {
     // Tela inicial do usuário
