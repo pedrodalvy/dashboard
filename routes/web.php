@@ -2,12 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 
-
 Route::get('/', function () {
     return 'resume';
 })->name('resume');
-
-
 
 Route::prefix('admin')->group(function () {
     // Tela inicial do usuário
@@ -17,8 +14,7 @@ Route::prefix('admin')->group(function () {
     Route::get('users', 'User\UserController@index')
         ->name('admin.users');
 
-
-
+        
     // Rotas para manutenção do currículo
     Route::prefix('resume')->group(function () {
         Route::get('profile', 'Resume\ResumeProfileController@index')
@@ -26,14 +22,14 @@ Route::prefix('admin')->group(function () {
 
         Route::post('profile', 'Resume\ResumeProfileController@update')
             ->name('resume.profile.update');
+
+        // Rotas para visualização e manutenção das experiencias
+        Route::resource('experience', 'Resume\ResumeExperienceController');
+
+        // Rotas para visualização e manutenção da formação
+        Route::resource('education', 'Resume\ResumeEducationController');
     });
-    
 
-    // Rotas para visualização e manutenção das experiencias
-    Route::resource('experience', 'Resume\ResumeExperienceController');
-
-    // Rotas para visualização e manutenção da formação
-    Route::resource('education', 'Resume\ResumeEducationController');
 
     // Abre o formulário de login
     Route::get('login', 'Auth\AdminLoginController@index')
@@ -46,8 +42,6 @@ Route::prefix('admin')->group(function () {
     // Faz logout e redireciona para tela de login
     Route::get('logout', 'Auth\AdminLoginController@logout')
         ->name('admin.logout');
-
-
 
     // Rotas para reset de senha
     Route::prefix('password')->group(function () {
