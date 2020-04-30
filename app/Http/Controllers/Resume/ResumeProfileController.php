@@ -26,7 +26,7 @@ class ResumeProfileController extends Controller
     {
         $request->pricing = formatMoney($request->pricing);
         
-        // $this->resumeProfile->validateInputProfile($request);
+        $this->resumeProfile->validateInputProfile($request);
 
         try {
             return $this->resumeProfile->updateProfileData($request);
