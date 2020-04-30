@@ -14,47 +14,51 @@
     </div>
 
 
-    <div class="card-body col-12 table-responsive">
+    <div class="card-body col-12 ">
+        <div class="table-responsive">
 
-        <table class="table table-hover table-resume-education">
-            <thead>
-                <tr>
-                    <th scope="col" class="course">Curso</th>
-                    <th scope="col" class="establishment">Instituição</th>
-                    <th scope="col" class="text-center date_in">Inicio</th>
-                    <th scope="col" class="text-center date_out">Fim</th>
-                    <th scope="col" class="text-center actions">Ações</th>
-                </tr>
-            </thead>
-            <tbody>
-                @forelse($educations as $education)
-                <tr>
-                    <td>{{ $education->course }}</td>
-                    <td>{{ $education->establishment }}</td>
-                    <td>{{ formatDateBr($education->date_in) }}</td>
-                    <td>{{ formatDateBr($education->date_out) }}</td>
-                    <td>
-                        <div class="d-flex justify-content-around">
-                            <a href="{{ route('education.show', $education->id)}}" title="Visualizar"
-                                class="btn  btn-circle btn-sm btn-info load">
-                                <i class="fas fa-file-alt"></i>
-                            </a>
-                            <button type="submit" class="btn btn-circle btn-sm btn-danger load" title="Remover" form="remove_{{$education->id}}">
-                                <i class="fas fa-trash"></i>
-                            </button>
-                        </div>
-                    <form action="{{ route('education.destroy', $education->id)}}" id="remove_{{$education->id}}" method="POST" hidden>
-                        @method('DELETE')
-                        @csrf
-                    </form>
-                    </td>
-                </tr>
-                @empty
-                <h3 class="text-center">Não existem formações cadastradas para este perfil</h3>
-                @endforelse
-            </tbody>
-        </table>
 
+            <table class="table table-hover table-resume-education">
+                <thead>
+                    <tr>
+                        <th scope="col" class="course">Curso</th>
+                        <th scope="col" class="establishment">Instituição</th>
+                        <th scope="col" class="text-center date_in">Inicio</th>
+                        <th scope="col" class="text-center date_out">Fim</th>
+                        <th scope="col" class="text-center actions">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @forelse($educations as $education)
+                    <tr>
+                        <td>{{ $education->course }}</td>
+                        <td>{{ $education->establishment }}</td>
+                        <td>{{ formatDateBr($education->date_in) }}</td>
+                        <td>{{ formatDateBr($education->date_out) }}</td>
+                        <td>
+                            <div class="d-flex justify-content-around">
+                                <a href="{{ route('education.show', $education->id)}}" title="Visualizar"
+                                    class="btn btn-circle btn-sm btn-info load">
+                                    <i class="fas fa-file-alt"></i>
+                                </a>
+                                <button type="submit" class="btn btn-circle btn-sm btn-danger load" title="Remover"
+                                    form="remove_{{$education->id}}">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                            <form action="{{ route('education.destroy', $education->id)}}"
+                                id="remove_{{$education->id}}" method="POST" hidden>
+                                @method('DELETE')
+                                @csrf
+                            </form>
+                        </td>
+                    </tr>
+                    @empty
+                    <h3 class="text-center">Não existem formações cadastradas para este perfil</h3>
+                    @endforelse
+                </tbody>
+            </table>
+        </div>
     </div>
 
 </div>

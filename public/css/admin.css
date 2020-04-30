@@ -35,3 +35,9 @@ label.is-invalid {
 .table-resume-education .actions {
     width: 9%;
 }
+
+@media only screen and (max-width: 600px) {
+    .table-resume-education .btn {
+        margin-right: 5px;
+    }
+  }
