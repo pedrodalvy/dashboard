@@ -8,7 +8,7 @@ Route::get('/', function () {
 
 
 Route::prefix('resume')->group(function () {
-    Route::get('resume', function() {
+    Route::get('/', function() {
         return 'reserved for resume page';
     })->name('resume.page');
 
