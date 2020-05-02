@@ -2,6 +2,9 @@
 
 Dashboard criado para gerenciar o site https://www.pedrodalvy.com. É possível adicionar informações como Perfil, Experiências e Formações, da mesma forma que é preenchido um currículo padrão.
 
+### Preview da tela inicial (incompleta)
+
+![desktop index](public/img/preview.png)
 
 ### Requisitos
 
