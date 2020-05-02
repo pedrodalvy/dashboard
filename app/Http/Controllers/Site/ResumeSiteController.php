@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Site;
 
 use App\Http\Controllers\Controller;
+use App\Services\Site\Email\SendMessageService;
 use App\Services\Site\ResumeSiteService;
 use Exception;
+use Illuminate\Http\Request;
 
 class ResumeSiteController extends Controller
 {
@@ -14,6 +16,7 @@ class ResumeSiteController extends Controller
     {
         $this->resumeSiteService = $resumeSiteService;
     }
+
     public function allResumeData($id)
     {
         try {
@@ -24,5 +27,12 @@ class ResumeSiteController extends Controller
                 'message' => $ex->getMessage(),
             ]);
         }
+    }
+
+    public function sendMessage(Request $request)
+    {
+        $message = new SendMessageService;
+
+        return $message->sendMessage($request);
     }
 }

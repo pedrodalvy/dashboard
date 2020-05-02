@@ -26,6 +26,24 @@ use Illuminate\Notifications\Notifiable;
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereResume($value)
  * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereUpdatedAt($value)
  * @mixin \Eloquent
+ * @property string $email
+ * @property string $fone
+ * @property string $address
+ * @property string $function
+ * @property float|null $pricing
+ * @property string|null $linkedin
+ * @property string|null $github
+ * @property string|null $site
+ * @property string|null $skills
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereAddress($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereEmail($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereFone($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereFunction($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereGithub($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereLinkedin($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile wherePricing($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereSite($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|\App\Models\Resume\ResumeProfile whereSkills($value)
  */
 class ResumeProfile extends Authenticatable
 {
