@@ -3,7 +3,7 @@
 Dashboard criado para gerenciar o site www.pedrodalvy.com. É possível adicionar informações como Perfil, Experiências e Formações, da mesma forma que é preenchido um currículo padrão.
 
 
-### Requirements
+### Requisitos
 
 * PHP 7.2.5 ou superior
 * Banco de Dados (ex: MySQL, PostgreSQL, SQLite)
