@@ -7,9 +7,9 @@
     <title>Mensagem</title>
 </head>
 <body>
-    {{ $email->name }}
-    {{ $email->email }}
-    {{ $email->subject }}
-    {{ $email->message }}
+    {{ $email->name }} <br>
+    {{ $email->email }} <br>
+    {{ $email->subject }} <br>
+    {{ $email->message }} <br>
 </body>
 </html>
