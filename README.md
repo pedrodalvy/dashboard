@@ -1,6 +1,6 @@
 ## Descrição do projeto
 
-Dashboard criado para gerenciar o site www.pedrodalvy.com. É possível adicionar informações como Perfil, Experiências e Formações, da mesma forma que é preenchido um currículo padrão.
+Dashboard criado para gerenciar o site https://www.pedrodalvy.com. É possível adicionar informações como Perfil, Experiências e Formações, da mesma forma que é preenchido um currículo padrão.
 
 
 ### Requisitos
@@ -34,6 +34,6 @@ Após gerar as seeds, o usuário padrão é admin e a senha também é admin, po
 É possível utilizar a API para visualizar todos os dados cadastrados no sistema em formato Json e integrá-lo com outro sistema.
 
 * Opcionalmente, executoar o servidor embutido do php: `php artisan serve`
-* Acessar a rota: `http://localhost:8000/api/v1/resume-info/1` para obter o retorno com os dados cadastrados.
+* Acessar a rota: `https://localhost:8000/api/v1/resume-info/1` para obter o retorno com os dados cadastrados.
 
 O número 1 no final da url representa o id do perfil. Atualmente o sistema só suporta um perfil, posteriormente será modificado para adição de mais usuários.
