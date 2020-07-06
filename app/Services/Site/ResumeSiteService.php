@@ -27,7 +27,7 @@ class ResumeSiteService
 
     protected function getExperience($id)
     {
-        return ResumeExperience::all()->toArray();
+        return ResumeExperience::all()->sortByDesc('date_in')->toArray();
     }
 
     protected function getProfile($id)

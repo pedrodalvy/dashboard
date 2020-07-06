@@ -3,18 +3,21 @@
 namespace App\Services\Resume;
 
 use App\Models\Resume\ResumeExperience;
+use Illuminate\Contracts\Foundation\Application;
+use Illuminate\Contracts\View\Factory;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class ExperienceService
 {
     /**
      * showExperiences
      *
-     * @return void
+     * @return Application|Factory|View
      */
     public function showExperiences()
     {
-        $experiences = ResumeExperience::all();
+        $experiences = ResumeExperience::all()->sortByDesc('date_in');
 
         return view('resume.experience')
             ->with('experiences', $experiences);
